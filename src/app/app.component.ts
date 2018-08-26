@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   rootPage:any = HomePage;
+  tab1: any;
+  tab2: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
