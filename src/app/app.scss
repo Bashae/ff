@@ -14,3 +14,28 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.swiper-slide {
+    display: block;
+    padding-top: 20px;
+}
+
+.content--main {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+}
+
+.post--stati .button-inner {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.button--edit {
+    color: #424242;
+    background-color: transparent;
+    float: right;
+    box-shadow: none;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+}
