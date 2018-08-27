@@ -10,6 +10,7 @@ import { FavoritesPage } from '../pages/favorites/favorites';
 import { LikesPage } from '../pages/likes/likes';
 import { PostsPage } from '../pages/posts/posts';
 import { PostComponent } from '../components/post/post';
+import { NewPostPage } from '../pages/new-post/new-post';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PostComponent } from '../components/post/post';
     FavoritesPage,
     LikesPage,
     PostsPage,
-    PostComponent
+    PostComponent,
+    NewPostPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { PostComponent } from '../components/post/post';
     FavoritesPage,
     LikesPage,
     PostsPage,
-    PostComponent
+    PostComponent,
+    NewPostPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tell us your Sin.</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismissModal()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows" modalToggle></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <h2>{{mysin}}</h2>
+  </ion-card>
+  <ion-item>
+    <ion-textarea placeholder="Enter a description" [(ngModel)]="mysin"></ion-textarea>
+  </ion-item>
+</ion-content>
