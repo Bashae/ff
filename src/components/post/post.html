@@ -5,18 +5,18 @@
     </p>
   </ion-card-content>
   <ion-row no-padding class="post--stati">
-    <ion-col>
-      <button ion-button clear small color="dark" icon-start disabled>
-        50&nbsp;&nbsp;<ion-icon name='star-outline'></ion-icon>
-      </button>
-    </ion-col>
     <ion-col text-center>
-      <button ion-button clear small color="dark" icon-start>
+      <button ion-button clear small color="dark" icon-start (click)="likePost()">
         500&nbsp;&nbsp;<ion-icon name='heart-outline'></ion-icon>
       </button>
     </ion-col>
+    <ion-col>
+      <button ion-button clear small color="dark" icon-start (click)="favoritePost()">
+        50&nbsp;&nbsp;<ion-icon name='star-outline'></ion-icon>
+      </button>
+    </ion-col>
     <ion-col text-right>
-      <button ion-button clear small color="dark" icon-start>
+      <button ion-button clear small color="dark" icon-start (click)="sharePost()">
         20&nbsp;&nbsp;<ion-icon name='share-alt'></ion-icon>
       </button>
     </ion-col>

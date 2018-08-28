@@ -9,8 +9,18 @@ export class PostComponent {
   text: string;
 
   constructor() {
-    console.log('Hello PostComponent Component');
-    this.text = 'Hello World';
+  }
+
+  favoritePost() {
+    console.log('user favorited post');
+  }
+
+  likePost() {
+    console.log('user liked post');
+  }
+
+  sharePost() {
+    console.log('user shared post');
   }
 
 }
