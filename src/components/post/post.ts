@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { LandingPage } from '../../pages/landing/landing';
 
 @Component({
   selector: 'post',
   templateUrl: 'post.html'
 })
 export class PostComponent {
-
+  @Input() postItem: any;
   text: string;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
   }
 
   favoritePost() {
     console.log('user favorited post');
+    console.log(this.postItem);
   }
 
   likePost() {
@@ -21,6 +24,10 @@ export class PostComponent {
 
   sharePost() {
     console.log('user shared post');
+  }
+
+  goToPage() {
+    this.navCtrl.push(LandingPage);
   }
 
 }

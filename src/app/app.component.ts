@@ -3,7 +3,6 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { LikesPage } from '../pages/likes/likes';
 import { PostsPage } from '../pages/posts/posts';
@@ -11,12 +10,11 @@ import { PostsPage } from '../pages/posts/posts';
 import { ModalController } from 'ionic-angular';
 import { NewPostPage } from '../pages/new-post/new-post';
 
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = PostsPage;
+  rootPage: any = PostsPage;
   tab1: any;
   tab2: any;
   tab3: any;

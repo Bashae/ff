@@ -6,17 +6,11 @@
     </ion-header>
     <ion-content>
         <ion-list>
-        <button ion-item>
+        <button ion-item (click)="goToPage('Posts')">
             Home
         </button>
-        <button ion-item>
-            Friends
-        </button>
-        <button ion-item>
-            Events
-        </button>
-        <button ion-item>
-            Close Menu
+        <button ion-item (click)="goToPage('Landing')">
+            Log In / Register
         </button>
         </ion-list>
     </ion-content>

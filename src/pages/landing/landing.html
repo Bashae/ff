@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>landing</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="!auth.user">
+    <ion-item (click)="goToPage('Login')">
+      Go To Login
+    </ion-item>
+    <ion-item (click)="goToPage('Register')">
+      Go To Register
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="logOut()" *ngIf="auth.user">Logout</button>
+</ion-content>
