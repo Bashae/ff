@@ -8,18 +8,20 @@ import { LandingPage } from '../../pages/landing/landing';
 })
 export class PostComponent {
   @Input() postItem: any;
+  liked: boolean = false;
+  favorited: boolean = false;
   text: string;
 
   constructor(public navCtrl: NavController) {
   }
 
   favoritePost() {
-    console.log('user favorited post');
-    console.log(this.postItem);
+    this.favorited = true;
+    console.log(this);
   }
 
   likePost() {
-    console.log('user liked post');
+    this.liked = true;
   }
 
   sharePost() {

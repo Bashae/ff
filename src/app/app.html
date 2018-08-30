@@ -9,8 +9,11 @@
         <button ion-item (click)="goToPage('Posts')">
             Home
         </button>
-        <button ion-item (click)="goToPage('Landing')">
+        <button ion-item (click)="goToPage('Landing')" *ngIf="!auth.user">
             Log In / Register
+        </button>
+        <button ion-item (click)="logOut()" *ngIf="auth.user">
+            Log Out
         </button>
         </ion-list>
     </ion-content>
@@ -32,7 +35,7 @@
 
 <ion-nav #content [root]="rootPage"></ion-nav>
 
-<ion-tabs>
+<ion-tabs *ngIf="footer">
     <ion-tab tabIcon="list" [root]="tab1"></ion-tab>
     <ion-tab tabIcon="heart" [root]="tab2"></ion-tab>
     <ion-tab tabIcon="flame" [root]="tab3"></ion-tab>

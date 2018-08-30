@@ -8,14 +8,19 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams, public auth: AuthProvider) {
-  
+  username: string;
+  password: string;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public auth: AuthProvider) {
   }
 
   attemptLogin() {
     let credentials = {
-      email: "ice.andrew.media@gmail.com",
-      password: "Cupcak3s123!"
+      email: this.username,
+      password: this.password
     }
 
     this.auth.signInWithEmail(credentials)

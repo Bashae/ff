@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -9,20 +9,29 @@ import { PostsPage } from '../pages/posts/posts';
 
 import { ModalController } from 'ionic-angular';
 import { NewPostPage } from '../pages/new-post/new-post';
+import { LandingPage } from '../pages/landing/landing';
+import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
+  footer: boolean = true;
   rootPage: any = PostsPage;
   tab1: any;
   tab2: any;
   tab3: any;
+  view: any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public modalCtrl: ModalController) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen, 
+    public modalCtrl: ModalController,
+    public auth: AuthProvider
+  ) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
@@ -33,8 +42,23 @@ export class MyApp {
   }
 
   openNewPostModal() {
-    const modal = this.modalCtrl.create(NewPostPage);
-    modal.present();
+    if ( this.auth.user ) {
+      const modal = this.modalCtrl.create(NewPostPage);
+      modal.present();
+    } else {
+      this.goToPage('Landing');
+    }
+  }
+
+  goToPage(page) {
+    if(page === 'Posts') {
+      this.footer = true;
+      this.nav.push(PostsPage);
+    }
+    if(page === 'Landing') {
+      this.footer = false;
+      this.nav.push(LandingPage);
+    }
   }
 }
 

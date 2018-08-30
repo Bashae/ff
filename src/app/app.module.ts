@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController, NavParams } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -20,6 +20,7 @@ import { SidebarPage } from '../pages/sidebar/sidebar';
 import { LoginPage } from '../pages/login/login';
 import { RegistrationPage } from '../pages/registration/registration';
 import { AuthProvider } from '../providers/auth/auth';
+import { HeaderComponent } from '../components/header/header';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     PostComponent,
     NewPostPage,
     RegistrationPage,
-    SidebarPage
+    SidebarPage,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ export const firebaseConfig = {
     PostComponent,
     NewPostPage,
     RegistrationPage,
-    SidebarPage
+    SidebarPage,
+    HeaderComponent
   ],
   providers: [
     AngularFireAuth,
