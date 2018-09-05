@@ -60,5 +60,9 @@ export class MyApp {
       this.nav.push(LandingPage);
     }
   }
+
+  logOut() {
+    this.auth.logOut();
+  }
 }
 

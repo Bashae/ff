@@ -1,3 +1,13 @@
 post {
+    .button--like.liked {
+        .ion-md-heart-outline:before {
+            content: "\f308";
+        }
+    }
 
+    .button--favorite.favorited {
+        .ion-md-star-outline:before {
+            content: "\f384";
+        }
+    }
 }

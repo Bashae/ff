@@ -6,23 +6,13 @@
   </ion-card-content>
   <ion-row no-padding class="post--stati">
     <ion-col text-center>
-      <button ion-button clear small color="dark" icon-start (click)="likePost()" *ngIf="!liked">
+      <button ion-button clear small color="dark" icon-start class="button--like" (click)="likePost()" [class.liked]="liked">
         500&nbsp;&nbsp;<ion-icon name='heart-outline' color="red"></ion-icon>
       </button>
     </ion-col>
-    <ion-col text-center>
-      <button ion-button clear small color="dark" icon-start (click)="likePost()" *ngIf="liked">
-        500&nbsp;&nbsp;<ion-icon name='heart' color="red"></ion-icon>
-      </button>
-    </ion-col>
     <ion-col>
-      <button ion-button clear small color="dark" icon-start (click)="favoritePost()" *ngIf="!favorited">
+      <button ion-button clear small color="dark" icon-start class="button--favorite" (click)="favoritePost()" [class.favorited]="favorited">
         50&nbsp;&nbsp;<ion-icon name='star-outline'></ion-icon>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button clear small color="dark" icon-start (click)="favoritePost()" *ngIf="favorited">
-        50&nbsp;&nbsp;<ion-icon name='star' color="yellow"></ion-icon>
       </button>
     </ion-col>
     <ion-col text-right>

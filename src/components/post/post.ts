@@ -16,12 +16,11 @@ export class PostComponent {
   }
 
   favoritePost() {
-    this.favorited = true;
-    console.log(this);
+    this.favorited = this.favorited ? false : true;
   }
 
   likePost() {
-    this.liked = true;
+    this.liked = this.liked ? false : true;
   }
 
   sharePost() {
