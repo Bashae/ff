@@ -43,10 +43,12 @@ export class MyApp {
 
   openNewPostModal() {
     if ( this.auth.user ) {
+      console.log('a');
       const modal = this.modalCtrl.create(NewPostPage);
       modal.present();
     } else {
-      this.goToPage('Landing');
+      console.log('b');
+      // this.goToPage('Landing');
     }
   }
 

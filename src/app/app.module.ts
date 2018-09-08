@@ -21,6 +21,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegistrationPage } from '../pages/registration/registration';
 import { AuthProvider } from '../providers/auth/auth';
 import { HeaderComponent } from '../components/header/header';
+import { PostProvider } from '../providers/post/post';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -72,7 +73,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    PostProvider
   ]
 })
 export class AppModule {}
