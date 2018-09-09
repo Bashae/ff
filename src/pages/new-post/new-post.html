@@ -1,17 +1,35 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Tell us your Sin.</ion-title>
+    <ion-title>Tell us a Thing.</ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismissModal()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android,windows" modalToggle></ion-icon>
+        <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card *ngIf="mysin">
+<ion-content no-padding>
+  <button ion-button full color="dark">Choose a Background</button>
+  <section>
+    <ion-grid class="image-grid">
+      <ion-row>
+        <ion-col col-4><img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+        <ion-col col-4><img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+        <ion-col col-4><img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-4><img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+          <ion-col col-4><img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+          <ion-col col-4><img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  <button ion-button full color="dark">Write a Thing</button>
+  <section>
+    Test Two
+  </section>
+  <!-- <ion-card *ngIf="mysin">
     <ion-card-content>
       <p class="content--main">
         {{mysin}}
@@ -22,6 +40,6 @@
     <ion-textarea placeholder="My Sin is..." [(ngModel)]="mysin"></ion-textarea>
   </ion-item>
   <button ion-button class="pull-right" (click)="submitPost()">
-    Set Me Free
-  </button>
+    Let it Go
+  </button> -->
 </ion-content>

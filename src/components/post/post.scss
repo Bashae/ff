@@ -2,12 +2,51 @@ post {
     .button--like.liked {
         .ion-md-heart-outline:before {
             content: "\f308";
+            color: #a80019;
         }
     }
 
     .button--favorite.favorited {
         .ion-md-star-outline:before {
             content: "\f384";
+            color: #a80019;
         }
+    }
+
+    .card-with-background {
+        position: relative;
+        text-align: center;
+        
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .card-title {
+            // background: rgba(0, 0, 0, .5);
+            background: rgba(168, 0, 25, .75);
+            padding: 15px 5px;
+            position: absolute;
+            top: 20%;
+            font-size: 2em;
+            width: 100%;
+            font-weight: 700;
+            color: #fff;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .custom-padding--row {
+        border-top: 1px solid #333;
+        padding-top: 0;
+    }
+    .card {
+        margin-top: 25px;
     }
 }

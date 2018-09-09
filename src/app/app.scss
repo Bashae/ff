@@ -30,6 +30,11 @@
     font-weight: 400;
 }
 
+.header--menu, 
+.header--new-post {
+    position: relative;
+}
+
 .button--edit {
     color: #424242;
     background-color: transparent;
@@ -38,6 +43,21 @@
     position: absolute;
     top: 7px;
     right: 5px;
+}
+
+.button--menu-close,
+.button--modal-close {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    background: transparent !important;
+    z-index: 5;
+    box-shadow: none !important;
+    color: #333;
+}
+
+button.button--edit.button.button-md.button-default.button-default-md:hover {
+    background: transparent;
 }
 
 .tab-button[aria-selected=true] .tab-button-icon[aria-label="flame"] {

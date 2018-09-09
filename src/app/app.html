@@ -1,13 +1,19 @@
 <ion-menu [content]="content">
-    <ion-header>
+    <ion-header class="header--menu">
         <ion-toolbar>
-        <ion-title>Menu</ion-title>
+            <ion-title>Menu</ion-title>
         </ion-toolbar>
+        <button ion-button icon-only menuClose class="button--menu-close">
+            <ion-icon name="close" style="float: right;"></ion-icon>
+        </button>
     </ion-header>
     <ion-content>
         <ion-list>
         <button ion-item (click)="goToPage('Posts')" menuClose>
             Home
+        </button>
+        <button ion-item (click)="goToPage('Personal')" menuClose>
+            My Posts
         </button>
         <button ion-item (click)="goToPage('Landing')" *ngIf="!auth.user" menuClose>
             Log In / Register
@@ -25,7 +31,7 @@
             <ion-icon name='menu'></ion-icon>
         </button>
         <ion-title>
-            What's your sin?
+            What's your stuff?
         </ion-title>
         <button ion-button icon-only class="button--edit" (click)="openNewPostModal()">
             <ion-icon name="create"></ion-icon>
