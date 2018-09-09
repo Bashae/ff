@@ -6,13 +6,13 @@
     </ion-header>
     <ion-content>
         <ion-list>
-        <button ion-item (click)="goToPage('Posts')">
+        <button ion-item (click)="goToPage('Posts')" menuClose>
             Home
         </button>
-        <button ion-item (click)="goToPage('Landing')" *ngIf="!auth.user">
+        <button ion-item (click)="goToPage('Landing')" *ngIf="!auth.user" menuClose>
             Log In / Register
         </button>
-        <button ion-item (click)="logOut()" *ngIf="auth.user">
+        <button ion-item (click)="logOut()" *ngIf="auth.user" menuClose>
             Log Out
         </button>
         </ion-list>

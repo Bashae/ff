@@ -31,7 +31,10 @@ export class NewPostPage {
 
   submitPost() {
     if(this.mysin) {
-      let sin = {};
+      let sin = {
+        content: ""
+      }
+      
       sin.content = this.mysin;
 
       this.postService.createPost(sin);
