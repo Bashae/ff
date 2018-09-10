@@ -10,36 +10,48 @@
 </ion-header>
 
 <ion-content no-padding>
-  <button ion-button full color="dark">Choose a Background</button>
-  <section>
+  <ion-card class="card-with-background" *ngIf="mysin">
+    <img src="/assets/imgs/backgrounds/010.jpg" alt="">
+    <div class="card-title" style="background: rgba(255, 255, 255, .5);color:black;">
+      {{mysin}}
+    </div>
+  </ion-card>
+  <!-- <ion-item>
+  </ion-item> -->
+  <!-- <button ion-button class="pull-right" (click)="submitPost()">
+    Let it Go
+  </button> -->
+  <button ion-button full color="dark" (click)="backgroundToggle = !backgroundToggle">Choose a Background</button>
+  <section *ngIf="backgroundToggle">
     <ion-grid class="image-grid">
       <ion-row>
-        <ion-col col-4><img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
-        <ion-col col-4><img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
-        <ion-col col-4><img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/010.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/011.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/012.jpg" alt=""></ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-4><img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
-          <ion-col col-4><img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
-          <ion-col col-4><img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/013.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/014.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/015.jpg" alt=""></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/016.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/017.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/018.jpg" alt=""></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/019.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt=""></ion-col>
       </ion-row>
     </ion-grid>
   </section>
-  <button ion-button full color="dark">Write a Thing</button>
-  <section>
-    Test Two
+  <button ion-button full color="dark" (click)="colorToggle = !colorToggle">Choose a Color</button>
+  <section *ngIf="colorToggle">
+    Color Toggle
   </section>
-  <!-- <ion-card *ngIf="mysin">
-    <ion-card-content>
-      <p class="content--main">
-        {{mysin}}
-      </p>
-    </ion-card-content>
-  </ion-card>
-  <ion-item>
+  <button ion-button full color="dark" (click)="textToggle = !textToggle">Write a Thing</button>
+  <section *ngIf="textToggle">
     <ion-textarea placeholder="My Sin is..." [(ngModel)]="mysin"></ion-textarea>
-  </ion-item>
-  <button ion-button class="pull-right" (click)="submitPost()">
-    Let it Go
-  </button> -->
+  </section>
 </ion-content>

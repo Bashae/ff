@@ -8,6 +8,10 @@ page-new-post {
         float: right;
     }
 
+    .content--main {
+        text-align: center;
+    }
+
     // .button-default {
     //     background: #a80019 !important;
     // }
@@ -24,7 +28,14 @@ page-new-post {
 
     .image-grid {
         ion-col {
+            overflow: hidden;
+            height: 85px;
             width: 100%;
+            
+        }
+        img {
+            min-width: 100%;
+            min-height: 100%;
         }
     }
 }

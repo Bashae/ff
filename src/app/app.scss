@@ -67,3 +67,25 @@ button.button--edit.button.button-md.button-default.button-default-md:hover {
 .tab-button[aria-selected=true] .tab-button-icon[aria-label="heart"] {
     color: red;
 }
+
+.card-with-background {
+    position: relative;
+    text-align: center;
+    
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    .card-title {
+        // background: rgba(0, 0, 0, .5);
+        // background: rgba(168, 0, 25, .75);
+        padding: 15px 5px;
+        position: absolute;
+        top: 20%;
+        font-size: 2em;
+        width: 100%;
+        font-weight: 700;
+        color: #fff;
+    }
+}

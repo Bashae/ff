@@ -9,8 +9,12 @@ import { Post } from '../../app/post';
   templateUrl: 'new-post.html',
 })
 export class NewPostPage {
-  mysin: string;
+  mysin: string = "Your sin will go here.";
   postItem: any;
+
+  backgroundToggle: boolean = false;
+  colorToggle: boolean = false;
+  textToggle: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -19,10 +23,6 @@ export class NewPostPage {
     public postService: PostProvider
   ) {
     // this.postItem = "hello world";
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewPostPage');
   }
 
   dismissModal() {
