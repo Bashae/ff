@@ -10,10 +10,10 @@
 </ion-header>
 
 <ion-content no-padding>
-  <ion-card class="card-with-background" *ngIf="mysin">
-    <img src="/assets/imgs/backgrounds/010.jpg" alt="">
-    <div class="card-title" style="background: rgba(255, 255, 255, .5);color:black;">
-      {{mysin}}
+  <ion-card class="card-with-background" *ngIf="cardText">
+    <img src="/assets/imgs/backgrounds/{{cardBackground}}.jpg"  alt="">
+    <div class="card-title" [style.backgroundColor]="cardColor" [style.color]="cardTextColor">
+      {{cardText}}
     </div>
   </ion-card>
   <!-- <ion-item>
@@ -25,33 +25,80 @@
   <section *ngIf="backgroundToggle">
     <ion-grid class="image-grid">
       <ion-row>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/010.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/011.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/012.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/010.jpg" alt="" (click)="changeBackgroundImage('010')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/011.jpg" alt="" (click)="changeBackgroundImage('011')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/012.jpg" alt="" (click)="changeBackgroundImage('012')"></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/013.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/014.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/015.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/013.jpg" alt="" (click)="changeBackgroundImage('013')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/014.jpg" alt="" (click)="changeBackgroundImage('014')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/015.jpg" alt="" (click)="changeBackgroundImage('015')"></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/016.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/017.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/018.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/016.jpg" alt="" (click)="changeBackgroundImage('016')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/017.jpg" alt="" (click)="changeBackgroundImage('017')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/018.jpg" alt="" (click)="changeBackgroundImage('018')"></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/019.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt=""></ion-col>
-        <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt=""></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/019.jpg" alt="" (click)="changeBackgroundImage('019')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt="" (click)="changeBackgroundImage('020')"></ion-col>
+        <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt="" (click)="changeBackgroundImage('021')"></ion-col>
       </ion-row>
     </ion-grid>
   </section>
-  <button ion-button full color="dark" (click)="colorToggle = !colorToggle">Choose a Color</button>
+  <button ion-button full color="dark" (click)="overlayToggle = !overlayToggle">Choose a Background color</button>
+  <section *ngIf="overlayToggle">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:red;margin:0 auto;" (click)="changeTextBackgroundColor('255, 0, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:blue;margin:0 auto;" (click)="changeTextBackgroundColor('0, 0, 255')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:green;margin:0 auto;" (click)="changeTextBackgroundColor('0, 128, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:yellow;margin:0 auto;" (click)="changeTextBackgroundColor('255, 255, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:black;margin:0 auto;" (click)="changeTextBackgroundColor('0, 0, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:grey;margin:0 auto;" (click)="changeTextBackgroundColor('128, 128, 128')"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  <button ion-button full color="dark" (click)="colorToggle = !colorToggle">Choose a Text color</button>
   <section *ngIf="colorToggle">
-    Color Toggle
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:red;margin:0 auto;" (click)="changeTextColor('255, 0, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:blue;margin:0 auto;" (click)="changeTextColor('0, 0, 255')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:green;margin:0 auto;" (click)="changeTextColor('0, 128, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:yellow;margin:0 auto;" (click)="changeTextColor('255, 255, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:black;margin:0 auto;" (click)="changeTextColor('0, 0, 0')"></div>
+        </ion-col>
+        <ion-col col-2>
+          <div style="width:100%;height:25px;display:block;background:grey;margin:0 auto;" (click)="changeTextColor('128, 128, 128')"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </section>
   <button ion-button full color="dark" (click)="textToggle = !textToggle">Write a Thing</button>
   <section *ngIf="textToggle">
-    <ion-textarea placeholder="My Sin is..." [(ngModel)]="mysin"></ion-textarea>
+    <ion-textarea placeholder="My Sin is..." [(ngModel)]="cardText"></ion-textarea>
   </section>
+  <button ion-button (click)="submitPost()">Submit Button</button>
 </ion-content>

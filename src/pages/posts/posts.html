@@ -18,8 +18,15 @@
       <post></post>
     </ion-slide>
   </ion-slides> -->
-  <post></post>
-  <post></post>
   <!-- <post></post>
   <post></post> -->
+  <post *ngFor="let post of posts" [postItem]="post"></post>
+  <!-- <ion-card *ngFor="let post of posts">
+    <ion-card-header>
+      {{ post.u_id }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ post.content }}
+    </ion-card-content>
+  </ion-card> -->
 </ion-content>

@@ -16,11 +16,10 @@ export class PostProvider {
   constructor(public afs: AngularFirestore) {
     this.postsCollection = this.afs.collection('posts/');
     // this.postDoc = this.afs.doc('posts/');
-    this.posts = this.postsCollection.valueChanges();
   }
 
   getAllPosts() {
-
+    return this.postsCollection;
   }
 
   createPost(post) {

@@ -11,16 +11,45 @@ export class PostComponent {
   liked: boolean = false;
   favorited: boolean = false;
   text: string;
+  likeCount: number = 500;
+  favoriteCount: number = 45;
+
+  cardBackground: string;
+  cardColor: any;
+  cardTextColor: any;
 
   constructor(public navCtrl: NavController) {
+
+  }
+
+  ngOnInit() {
+    this.favoriteCount = this.postItem.favorites;
+    this.likeCount = this.postItem.likes;
+    this.text = this.postItem.content;
+    this.cardBackground = this.postItem.background;
+    this.cardColor = this.postItem.overlay_color;
+    this.cardTextColor = this.postItem.text_color;
+    console.log(this.postItem);
   }
 
   favoritePost() {
-    this.favorited = this.favorited ? false : true;
+    if(this.favorited) {
+      this.favorited = false;
+      this.favoriteCount--;
+    } else {
+      this.favorited = true;
+      this.favoriteCount++;
+    }
   }
 
   likePost() {
-    this.liked = this.liked ? false : true;
+    if(this.liked) {
+      this.liked = false;
+      this.likeCount--;
+    } else {
+      this.liked = true;
+      this.likeCount++;
+    }
   }
 
   sharePost() {
