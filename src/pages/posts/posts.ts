@@ -9,7 +9,7 @@ import { Observable } from 'rxjs-compat';
   templateUrl: 'posts.html',
 })
 export class PostsPage {
-  posts: Observable<any[]>;
+  posts: any[];
 
   constructor(
     public navCtrl: NavController, 
