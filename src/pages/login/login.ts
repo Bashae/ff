@@ -19,20 +19,6 @@ export class LoginPage {
     public auth: AuthProvider) {
   }
 
-  attemptLogin() {
-    let credentials = {
-      email: this.username,
-      password: this.password
-    }
-
-    this.auth.signInWithEmail(credentials)
-      .then(
-        (res) => { 
-          console.log(res);
-          this.navCtrl.push(PostsPage);
-        },
-        (err) => { console.log(err) }
-      )
-  }
+  
 
 }
