@@ -14,15 +14,55 @@ export class PostProvider {
   postDoc: AngularFirestoreDocument;
 
   constructor(public afs: AngularFirestore) {
-    this.postsCollection = this.afs.collection('posts/');
+    this.postsCollection = this.afs.collection('posts');
     // this.postDoc = this.afs.doc('posts/');
   }
 
-  getAllPosts() {
-    return this.postsCollection;
+  getPost(post) {
+    this.postDoc = this.afs.doc('posts/' + post);
+    // console.log(this.postDoc);
   }
 
-  createPost(post) {
-    this.postsCollection.add(post);
+  getAllPosts() {
+    // this.posts = this.postsCollection.snapshotChanges().map(actions => {
+    //   return actions.map(a => {
+    //     const data = a.payload.doc.data() as Post;
+    //     const id = a.payload.doc.id;
+
+    //     console.log(id);
+    //     console.log(data);
+    //     return { id, ...data };
+    //   });
+    // });
+    this.posts = this.postsCollection.snapshotChanges();
+    return this.posts;
+
+    // this.posts = this.postsCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
+    //     const data = a.payload.doc.data() as Post;
+    //     const id = a.payload.doc.id;
+    //     return { id, ...data };
+    //   }))
+    // );
+  }
+
+  createPost(post: Post) {
+    // this.postsCollection.add(post);
+  }
+
+  likePost(post) {
+    // let id = p
+    // let doc = this.afs.doc('posts/')
+  }
+
+  favoritePost() {
+
+  }
+
+  unlikePost() {
+
+  }
+
+  unfavoritePost() {
+
   }
 }

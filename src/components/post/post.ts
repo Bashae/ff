@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LandingPage } from '../../pages/landing/landing';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
   selector: 'post',
@@ -13,14 +14,16 @@ export class PostComponent {
   text: string;
   likeCount: number = 500;
   favoriteCount: number = 45;
+  noAuthAttempt: number = 0;
 
   cardBackground: string;
   cardColor: any;
   cardTextColor: any;
 
-  constructor(public navCtrl: NavController) {
-
-  }
+  constructor(
+    public navCtrl: NavController,
+    public auth: AuthProvider
+  ) {}
 
   ngOnInit() {
     this.favoriteCount = this.postItem.favorites;
@@ -29,26 +32,43 @@ export class PostComponent {
     this.cardBackground = this.postItem.background;
     this.cardColor = this.postItem.overlay_color;
     this.cardTextColor = this.postItem.text_color;
-    console.log(this.postItem);
+
+    // console.log(this.postItem.id);
   }
 
   favoritePost() {
-    if(this.favorited) {
-      this.favorited = false;
-      this.favoriteCount--;
+    if(this.auth.user) {
+      if(this.favorited) {
+        this.favorited = false;
+        this.favoriteCount--;
+      } else {
+        this.favorited = true;
+        this.favoriteCount++;
+      }
     } else {
-      this.favorited = true;
-      this.favoriteCount++;
+      if ( this.noAuthAttempt < 3 ) {
+        this.noAuthAttempt++;
+      } else {
+        this.navCtrl.push(LandingPage);
+      }
     }
   }
 
   likePost() {
-    if(this.liked) {
-      this.liked = false;
-      this.likeCount--;
+    if(this.auth.user) {
+      if(this.liked) {
+        this.liked = false;
+        this.likeCount--;
+      } else {
+        this.liked = true;
+        this.likeCount++;
+      }
     } else {
-      this.liked = true;
-      this.likeCount++;
+      if ( this.noAuthAttempt < 2 ) {
+        this.noAuthAttempt++;
+      } else {
+        this.navCtrl.push(LandingPage);
+      }
     }
   }
 

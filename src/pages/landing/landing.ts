@@ -13,8 +13,8 @@ import { PostsPage } from '../posts/posts';
   templateUrl: 'landing.html',
 })
 export class LandingPage {
-  username: string;
-  password: string;
+  username: string = "";
+  password: string = "";
 
   constructor(
     public navCtrl: NavController, 
@@ -25,26 +25,61 @@ export class LandingPage {
 
   }
 
-  attemptLogin() {
-    let credentials = {
+  setCredentials() {
+    if ( this.username === "" ) {
+      this.showAlert("Please enter an email address.");
+      return false;
+    }
+
+    if ( this.password === "" ) {
+      this.showAlert("Please enter a password.");
+      return false;
+    }
+    
+    return {
       email: this.username,
       password: this.password
-    }
+    };
+  }
+
+  attemptLogin() {
+    let credentials = this.setCredentials();
+    if ( !credentials ) { return false; }
 
     this.auth.signInWithEmail(credentials)
       .then(
         (res) => { 
-          console.log(res);
           this.navCtrl.push(PostsPage);
         },
         (err) => { 
-          console.log(err);
-          // this.showAlert();
           if(err.code == "auth/wrong-password") {
             this.showAlert("Please enter the correct password.");
           }
           if(err.code == "auth/invalid-email") {
             this.showAlert("Please enter a valid email address");
+          }
+        }
+      )
+  }
+
+  attemptRegistration() {
+    let credentials = this.setCredentials();
+    if ( !credentials ) {  return false; }
+
+    this.auth.signUpWithEmail(credentials)
+      .then(
+        (res) => {
+          console.log(res);
+          // Add Account Created toast?
+          this.navCtrl.push(PostsPage);
+        },
+        (err) => {
+          console.log(err);
+          if(err.code == "auth/email-already-in-use") {
+            this.showAlert("This Email already exists.");
+          }
+          if(err.code == "auth/invalid-email") {
+            this.showAlert("Please enter a proper email.");
           }
         }
       )
