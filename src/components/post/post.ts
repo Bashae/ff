@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LandingPage } from '../../pages/landing/landing';
 import { AuthProvider } from '../../providers/auth/auth';
+import { PostProvider } from '../../providers/post/post';
 
 @Component({
   selector: 'post',
@@ -22,7 +23,8 @@ export class PostComponent {
 
   constructor(
     public navCtrl: NavController,
-    public auth: AuthProvider
+    public auth: AuthProvider,
+    public postService: PostProvider
   ) {}
 
   ngOnInit() {
@@ -54,14 +56,18 @@ export class PostComponent {
     }
   }
 
-  likePost() {
+  likePost(post) {
     if(this.auth.user) {
       if(this.liked) {
         this.liked = false;
         this.likeCount--;
+        post.likes = this.likeCount;
+        this.postService.unlikePost(post);
       } else {
         this.liked = true;
         this.likeCount++;
+        post.likes = this.likeCount;
+        this.postService.likePost(post);
       }
     } else {
       if ( this.noAuthAttempt < 2 ) {

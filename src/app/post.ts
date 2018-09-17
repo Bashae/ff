@@ -1,6 +1,7 @@
 export class Post {
   background: string;
   content: string;
+  id: string;
   favorites: number;
   likes: number;
   overlay_color: string;

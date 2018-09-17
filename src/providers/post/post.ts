@@ -6,6 +6,7 @@ import AP = firebase.auth.AuthProvider;
 import { Observable } from 'rxjs-compat';
 
 import { Post } from "../../app/post";
+import { AuthProvider } from '../auth/auth';
 
 @Injectable()
 export class PostProvider {
@@ -13,8 +14,13 @@ export class PostProvider {
   posts: Observable<any[]>;
   postDoc: AngularFirestoreDocument;
 
-  constructor(public afs: AngularFirestore) {
+  likesCollection: AngularFirestoreCollection<any>;
+  likes: Observable<any[]>;
+  likeDoc;
+
+  constructor(public afs: AngularFirestore, public auth: AuthProvider) {
     this.postsCollection = this.afs.collection('posts');
+    this.likesCollection = this.afs.collection('likes');
     // this.postDoc = this.afs.doc('posts/');
   }
 
@@ -45,24 +51,54 @@ export class PostProvider {
     // );
   }
 
-  createPost(post: Post) {
+  createPost(post: Post, id: string) {
     // this.postsCollection.add(post);
   }
 
-  likePost(post) {
-    // let id = p
-    // let doc = this.afs.doc('posts/')
+  likePost(post: Post) {
+    let doc = this.afs.doc('posts/' + post.id);
+    doc.update(post);
   }
 
   favoritePost() {
 
   }
 
-  unlikePost() {
+  unlikePost(post: Post) {
+    this.destroyLike(post.id);
 
+    // let doc = this.afs.doc('posts/' + post.id);
+    // doc.update(post);
   }
 
   unfavoritePost() {
 
+  }
+
+  createLike() {
+
+  }
+
+  destroyLike(postId) {
+    // TODO Clean
+    let thing;
+    let selectedItems = this.afs.collection('likes', ref => 
+      thing = ref.where('u_id', '==', this.auth.user.uid)
+         .where('p_id', '==', postId));
+
+    thing.get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        doc.ref.delete();
+      });
+    });
+
+    // selectedItems.ref.get()
+    //   .then(
+    //   res => {res.forEach(element => { console.log(element.  );})})
+    //   .catch(
+    //     res => {console.log(res)}
+    //   )
+    // // console.log(a);
+    // // a.destroy();
   }
 }

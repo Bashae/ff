@@ -10,7 +10,7 @@
   <!-- </ion-card-content> -->
   <!-- <div class="card-subtitle">41 Listings</div> -->
   <ion-row padding class="post--stati">
-    <button ion-button clear small color="dark" icon-start class="button--like" (click)="likePost()" [class.liked]="liked">
+    <button ion-button clear small color="dark" icon-start class="button--like" (click)="likePost(postItem)" [class.liked]="liked">
       <ion-icon name='heart-outline' color="red"></ion-icon>
     </button>
     <button ion-button clear small color="dark" icon-start class="button--favorite" (click)="favoritePost()" [class.favorited]="favorited">
