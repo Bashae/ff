@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
-import { Observable } from 'rxjs-compat';
-
-import { map } from 'rxjs/operators';
-import { Post } from '../../app/post';
 
 @IonicPage()
 @Component({
@@ -12,6 +8,8 @@ import { Post } from '../../app/post';
   templateUrl: 'posts.html',
 })
 export class PostsPage {
+  hideScroll: boolean = false;
+  lastItem: any;
   posts: any[] = [];
 
   constructor(
@@ -23,12 +21,30 @@ export class PostsPage {
     // console.log('posts are');
     // console.log(this.posts);
 
-    this.postService.getAllPosts()
+    this.postService.getStartPosts()
       .then(res => {
         this.posts = [];
         res.docs.forEach(doc => {
           this.posts.push(doc.data())
+          this.lastItem = doc;
         })
+
+      });
+  }
+
+  doInfinite(evt) {
+    this.postService.getNextPosts(this.lastItem)
+      .then(res => {
+        if(res.empty) {
+          this.hideScroll = true;
+          evt.complete();
+        } else {
+          res.docs.forEach(doc => {
+            this.posts.push(doc.data());
+            this.lastItem = doc;
+          })
+          evt.complete();
+        }
       });
   }
 

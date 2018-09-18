@@ -21,8 +21,8 @@
     </button> -->
     <ion-col>
       <ul style="float:right;">
-        <li>{{likeCount}} Likes</li>
-        <li>{{favoriteCount}} Favorited</li>
+        <li *ngIf="likeCount > 0">{{likeCount}} Likes</li>
+        <li *ngIf="favoriteCount > 0">{{favoriteCount}} Favorited</li>
       </ul>
     </ion-col>
   </ion-row>

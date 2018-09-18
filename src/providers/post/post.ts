@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestoreModule } from 'angularfire2/firestore';
-import { updateDate } from 'ionic-angular/umd/util/datetime-util';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
-import AP = firebase.auth.AuthProvider;
 import { Observable } from 'rxjs-compat';
 
 import { Post } from "../../app/post";
 import { AuthProvider } from '../auth/auth';
-import { query } from '@angular/core/src/render3/instructions';
+import { DateTime } from 'ionic-angular';
 
 @Injectable()
 export class PostProvider {
@@ -23,6 +21,8 @@ export class PostProvider {
   favorites: Observable<any[]>;
   favoriteDoc;
 
+  lastDoc: AngularFirestoreDocument;
+
   constructor(public afs: AngularFirestore, public auth: AuthProvider) {
     this.postsCollection = this.afs.collection('posts');
     this.likesCollection = this.afs.collection('likes');
@@ -31,43 +31,38 @@ export class PostProvider {
 
   getPost(post) {
     this.postDoc = this.afs.doc('posts/' + post);
-    // console.log(this.postDoc);
   }
 
-  getAllPosts() {
-    // this.posts = this.postsCollection.snapshotChanges().map(actions => {
-    //   return actions.map(a => {
-    //     const data = a.payload.doc.data() as Post;
-    //     const id = a.payload.doc.id;
-
-    //     console.log(id);
-    //     console.log(data);
-    //     return { id, ...data };
-    //   });
-    // });
+  getStartPosts() {
     this.posts = this.postsCollection.valueChanges();
     return this.postsCollection.ref
-      .limit(3)
+      .limit(5)
+      .orderBy('timestamp')
       .get();
+  }
 
-    // this.posts = this.postsCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
-    //     const data = a.payload.doc.data() as Post;
-    //     const id = a.payload.doc.id;
-    //     return { id, ...data };
-    //   }))
-    // );
+  getNextPosts(lastItem) {
+    this.posts = this.postsCollection.valueChanges();
+    return this.postsCollection.ref
+      .limit(5)
+      .orderBy('timestamp')
+      .startAfter(lastItem)
+      .get();
   }
 
   createPost(post: Post) {
+    const timestamp = new Date().getTime();
+    let cardId = this.afs.createId();
+
+    post.id = cardId;
+    post.timestamp = timestamp * -1;
+
     this.postsCollection.add(post)
       .then(docRef => {
-        console.log('document created')
-        console.log(post)
-      })
-      .catch(err => {
-        console.log('document creation error')
-        console.log(err)
-      })
+        post.id = docRef.id;
+        let doc = this.afs.doc('posts/' + docRef.id);
+        doc.update(post);
+      });
   }
 
   likePost(post: Post) {

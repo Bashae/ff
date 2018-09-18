@@ -6,5 +6,6 @@ export class Post {
   likes: number;
   overlay_color: string;
   text_color: string;
+  timestamp: any;
   u_id: string;
 }

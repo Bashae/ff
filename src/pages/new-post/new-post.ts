@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
 import { Post } from '../../app/post';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
@@ -25,7 +26,8 @@ export class NewPostPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public viewCtrl: ViewController,
-    public postService: PostProvider
+    public postService: PostProvider,
+    public afs: AngularFirestore
   ) {
     // this.postItem = "hello world";
     this.cardBackground = "010";
@@ -43,8 +45,8 @@ export class NewPostPage {
       let sin = <Post> {
         background: this.cardBackground,
         content: this.cardText,
-        favorites: 1,
-        likes: 1,
+        favorites: 0,
+        likes: 0,
         overlay_color: this.cardColor,
         text_color: this.cardTextColor,
         u_id: "1"
