@@ -38,14 +38,18 @@ export class PostComponent {
     // console.log(this.postItem.id);
   }
 
-  favoritePost() {
+  favoritePost(post) {
     if(this.auth.user) {
       if(this.favorited) {
         this.favorited = false;
         this.favoriteCount--;
+        post.favorites = this.favoriteCount;
+        this.postService.unfavoritePost(post);
       } else {
         this.favorited = true;
         this.favoriteCount++;
+        post.favorites = this.favoriteCount;
+        this.postService.favoritePost(post);
       }
     } else {
       if ( this.noAuthAttempt < 3 ) {

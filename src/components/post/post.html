@@ -13,7 +13,7 @@
     <button ion-button clear small color="dark" icon-start class="button--like" (click)="likePost(postItem)" [class.liked]="liked">
       <ion-icon name='heart-outline' color="red"></ion-icon>
     </button>
-    <button ion-button clear small color="dark" icon-start class="button--favorite" (click)="favoritePost()" [class.favorited]="favorited">
+    <button ion-button clear small color="dark" icon-start class="button--favorite" (click)="favoritePost(postItem)" [class.favorited]="favorited">
       <ion-icon name='star-outline'></ion-icon>
     </button>
     <!-- <button ion-button clear small color="dark" icon-start (click)="sharePost()">
