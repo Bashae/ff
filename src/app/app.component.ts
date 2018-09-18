@@ -18,7 +18,7 @@ import { AuthProvider } from '../providers/auth/auth';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   footer: boolean = true;
-  rootPage: any = PostsPage;
+  // rootPage: any = PostsPage;
   tab1: any;
   tab2: any;
   tab3: any;

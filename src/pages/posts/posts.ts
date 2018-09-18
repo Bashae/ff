@@ -24,27 +24,12 @@ export class PostsPage {
     // console.log(this.posts);
 
     this.postService.getAllPosts()
-    //   .pipe(map(actions => actions.map(a => {
-    //     console.log('anything?');
-    //     console.log(a);
-    //     const data = a.payload.doc.data() as Post;
-    //     const id = a.payload.doc.id;
-    //     console.log(data);
-    //     console.log(id);
-    //     return { id, ...data };
-    //   }))
-    // );
-    .subscribe(res => {
-      res.map(item => {
-        const data = item.payload.doc.data() as Post;
-        const id = item.payload.doc.id;
-        this.posts.push({ id, ...data });
-      })
-      console.log(this.posts);
-      // let a = this.postService.getPost(res);
-      // this.posts = res;
-      // return this.posts;
-    })
+      .then(res => {
+        this.posts = [];
+        res.docs.forEach(doc => {
+          this.posts.push(doc.data())
+        })
+      });
   }
 
   runThing() {

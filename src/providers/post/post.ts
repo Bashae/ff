@@ -7,6 +7,7 @@ import { Observable } from 'rxjs-compat';
 
 import { Post } from "../../app/post";
 import { AuthProvider } from '../auth/auth';
+import { query } from '@angular/core/src/render3/instructions';
 
 @Injectable()
 export class PostProvider {
@@ -26,7 +27,6 @@ export class PostProvider {
     this.postsCollection = this.afs.collection('posts');
     this.likesCollection = this.afs.collection('likes');
     this.favoritesCollection = this.afs.collection('favorites');
-    // this.postDoc = this.afs.doc('posts/');
   }
 
   getPost(post) {
@@ -45,8 +45,10 @@ export class PostProvider {
     //     return { id, ...data };
     //   });
     // });
-    this.posts = this.postsCollection.snapshotChanges();
-    return this.posts;
+    this.posts = this.postsCollection.valueChanges();
+    return this.postsCollection.ref
+      .limit(3)
+      .get();
 
     // this.posts = this.postsCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
     //     const data = a.payload.doc.data() as Post;
@@ -152,14 +154,19 @@ export class PostProvider {
         doc.ref.delete();
       });
     });
+  }
 
-    // selectedItems.ref.get()
-    //   .then(
-    //   res => {res.forEach(element => { console.log(element.  );})})
-    //   .catch(
-    //     res => {console.log(res)}
-    //   )
-    // // console.log(a);
-    // // a.destroy();
+  getUserLikes(postId) {
+    return this.likesCollection.ref
+      .where('u_id', '==', this.auth.user.uid)
+      .where('p_id', '==', postId)
+      .get();
+  }
+
+  getUserFavorites(postId) {
+    return this.favoritesCollection.ref
+      .where('u_id', '==', this.auth.user.uid)
+      .where('p_id', '==', postId)
+      .get();
   }
 }

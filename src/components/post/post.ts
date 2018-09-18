@@ -10,7 +10,7 @@ import { PostProvider } from '../../providers/post/post';
 })
 export class PostComponent {
   @Input() postItem: any;
-  liked: boolean = false;
+  liked: any = false;
   favorited: boolean = false;
   text: string;
   likeCount: number = 500;
@@ -35,7 +35,15 @@ export class PostComponent {
     this.cardColor = this.postItem.overlay_color;
     this.cardTextColor = this.postItem.text_color;
 
-    // console.log(this.postItem.id);
+    let isLiked = this.postService.getUserLikes(this.postItem.id);
+    isLiked.then(res => {
+      this.liked = res.empty ? false : true;
+    });
+
+    let isFavorited = this.postService.getUserFavorites(this.postItem.id);
+    isFavorited.then(res => {
+      this.favorited = res.empty ? false : true;
+    })
   }
 
   favoritePost(post) {
@@ -83,7 +91,7 @@ export class PostComponent {
   }
 
   sharePost() {
-    console.log('user shared post');
+    // console.log('user shared post');
   }
 
   goToPage() {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
+import { Post } from '../../app/post';
 
 @IonicPage()
 @Component({
@@ -39,7 +40,7 @@ export class NewPostPage {
 
   submitPost() {
     if(this.cardText) {
-      let sin = {
+      let sin = <Post> {
         background: this.cardBackground,
         content: this.cardText,
         favorites: 1,
@@ -50,7 +51,6 @@ export class NewPostPage {
       }
       
       sin.content = this.cardText;
-
       this.postService.createPost(sin);
     }
   }
