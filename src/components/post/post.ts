@@ -35,15 +35,17 @@ export class PostComponent {
     this.cardColor = this.postItem.overlay_color;
     this.cardTextColor = this.postItem.text_color;
 
-    let isLiked = this.postService.getUserLikes(this.postItem.id);
-    isLiked.then(res => {
-      this.liked = res.empty ? false : true;
-    });
+    if(this.auth.user) {
+      let isLiked = this.postService.getUserLikes(this.postItem.id);
+      isLiked.then(res => {
+        this.liked = res.empty ? false : true;
+      });
 
-    let isFavorited = this.postService.getUserFavorites(this.postItem.id);
-    isFavorited.then(res => {
-      this.favorited = res.empty ? false : true;
-    })
+      let isFavorited = this.postService.getUserFavorites(this.postItem.id);
+      isFavorited.then(res => {
+        this.favorited = res.empty ? false : true;
+      })
+    }
   }
 
   favoritePost(post) {
