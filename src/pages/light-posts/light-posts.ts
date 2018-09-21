@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the LightPostsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-light-posts',
@@ -16,10 +9,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class LightPostsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LightPostsPage');
+    console.log('get all posts of good nature');
+    // Add row/cell for overall_status: 'good' or 'bad'
+    // While liking, compare good votes & bad votes.
+    // If bad votes are greater, overall_status is bad
+    // If good votes, overall_status is good
+    // Default to Good if Neutral.
   }
 
 }
