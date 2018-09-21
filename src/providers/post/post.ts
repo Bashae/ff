@@ -65,14 +65,14 @@ export class PostProvider {
       });
   }
 
-  likePost(post: Post) {
+  likePost(post: Post, type: string) {
     let doc = this.afs.doc('posts/' + post.id);
     doc.update(post);
 
-    this.createLike(post.id);
+    this.createLike(post.id, type);
   }
 
-  unlikePost(post: Post) {
+  unlikePost(post: Post, type: string) {
     let doc = this.afs.doc('posts/' + post.id);
     doc.update(post);
 
@@ -124,8 +124,9 @@ export class PostProvider {
     });
   }
 
-  createLike(postId) {
-    let like = {'u_id': this.auth.user.uid, 'p_id': postId};
+  createLike(postId, type) {
+    console.log('create like');
+    let like = {'u_id': this.auth.user.uid, 'p_id': postId, 'type': type};
     this.likesCollection.add(like)
       .then(docRef => {
         console.log('document created')
@@ -135,6 +136,20 @@ export class PostProvider {
         console.log('document creation error')
         console.log(err)
       })
+  }
+
+  updateLike(post: Post, type: string) {
+    console.log('update like');
+    let thing;
+    let selectedItems = this.afs.collection('likes', ref => 
+      thing = ref.where('u_id', '==', this.auth.user.uid)
+         .where('p_id', '==', post.id));
+
+    thing.get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        doc.ref.update("type", type);
+      });
+    });
   }
 
   destroyLike(postId) {

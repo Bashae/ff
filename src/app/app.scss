@@ -80,9 +80,10 @@ button.button--edit.button.button-md.button-default.button-default-md:hover {
     .card-title {
         // background: rgba(0, 0, 0, .5);
         // background: rgba(168, 0, 25, .75);
+        top: 40%;
+        transform: translateY(-40%);
         padding: 15px 5px;
         position: absolute;
-        top: 20%;
         font-size: 2em;
         width: 100%;
         font-weight: 700;

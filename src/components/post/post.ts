@@ -16,6 +16,7 @@ export class PostComponent {
   likeCount: number = 500;
   favoriteCount: number = 45;
   noAuthAttempt: number = 0;
+  type: string = '';
 
   cardBackground: string;
   cardColor: any;
@@ -38,50 +39,77 @@ export class PostComponent {
     if(this.auth.user) {
       let isLiked = this.postService.getUserLikes(this.postItem.id);
       isLiked.then(res => {
-        this.liked = res.empty ? false : true;
+        if(res.empty) {
+          this.liked = false;
+        } else {
+          this.liked = true;
+          let tempType = '';
+          res.forEach(function(doc) {
+            tempType = doc.data().type;  
+          });
+          this.type = tempType;
+          console.log(this.liked);
+          console.log(this.type)
+        }
       });
 
-      let isFavorited = this.postService.getUserFavorites(this.postItem.id);
-      isFavorited.then(res => {
-        this.favorited = res.empty ? false : true;
-      })
+      // let isFavorited = this.postService.getUserFavorites(this.postItem.id);
+      // isFavorited.then(res => {
+      //   this.favorited = res.empty ? false : true;
+      // })
     }
   }
 
-  favoritePost(post) {
-    if(this.auth.user) {
-      if(this.favorited) {
-        this.favorited = false;
-        this.favoriteCount--;
-        post.favorites = this.favoriteCount;
-        this.postService.unfavoritePost(post);
-      } else {
-        this.favorited = true;
-        this.favoriteCount++;
-        post.favorites = this.favoriteCount;
-        this.postService.favoritePost(post);
-      }
-    } else {
-      if ( this.noAuthAttempt < 3 ) {
-        this.noAuthAttempt++;
-      } else {
-        this.navCtrl.push(LandingPage);
-      }
-    }
-  }
+  // returnType(list) {
+  //   this.liked = 
+  // }
 
-  likePost(post) {
-    if(this.auth.user) {
-      if(this.liked) {
-        this.liked = false;
-        this.likeCount--;
-        post.likes = this.likeCount;
-        this.postService.unlikePost(post);
+  // favoritePost(post) {
+  //   if(this.auth.user) {
+  //     if(this.favorited) {
+  //       this.favorited = false;
+  //       this.favoriteCount--;
+  //       post.favorites = this.favoriteCount;
+  //       this.postService.unfavoritePost(post);
+  //     } else {
+  //       this.favorited = true;
+  //       this.favoriteCount++;
+  //       post.favorites = this.favoriteCount;
+  //       this.postService.favoritePost(post);
+  //     }
+  //   } else {
+  //     if ( this.noAuthAttempt < 3 ) {
+  //       this.noAuthAttempt++;
+  //     } else {
+  //       this.navCtrl.push(LandingPage);
+  //     }
+  //   }
+  // }
+
+  likePost( post, typed ) {
+    if ( this.auth.user ) {
+      if ( this.liked ) {
+        if ( this.type == 'good' ) {
+          if (typed == 'good') {
+            this.liked = false;
+            this.postService.unlikePost(post, typed);
+          } else {
+            this.type = typed;
+            this.postService.updateLike(post, typed);
+          }
+        } else if ( this.type === 'bad' ) {
+          if (typed == 'bad') {
+            this.liked = false;
+            this.postService.unlikePost(post, typed);
+          } else {
+            this.type = typed;
+            this.postService.updateLike(post, typed);
+          }
+        }
       } else {
         this.liked = true;
-        this.likeCount++;
-        post.likes = this.likeCount;
-        this.postService.likePost(post);
+        this.type = typed;
+        this.postService.likePost(post, typed);
       }
     } else {
       if ( this.noAuthAttempt < 2 ) {
