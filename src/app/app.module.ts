@@ -24,6 +24,9 @@ import { AuthProvider } from '../providers/auth/auth';
 import { HeaderComponent } from '../components/header/header';
 import { PostProvider } from '../providers/post/post';
 
+import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
+import { LightPostsPage } from '../pages/light-posts/light-posts';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
   authDomain: "forbiddenfruit-92258.firebaseapp.com",
@@ -40,6 +43,8 @@ export const firebaseConfig = {
     FavoritesPage,
     LandingPage,
     LikesPage,
+    LightPostsPage,
+    DarkPostsPage,
     LoginPage,
     PostsPage,
     PostComponent,
@@ -59,6 +64,8 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     FavoritesPage,
+    LightPostsPage,
+    DarkPostsPage,
     LandingPage,
     LikesPage,
     LoginPage,

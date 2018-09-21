@@ -11,6 +11,8 @@ import { ModalController } from 'ionic-angular';
 import { NewPostPage } from '../pages/new-post/new-post';
 import { LandingPage } from '../pages/landing/landing';
 import { AuthProvider } from '../providers/auth/auth';
+import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
+import { LightPostsPage } from '../pages/light-posts/light-posts';
 
 @Component({
   templateUrl: 'app.html'
@@ -37,8 +39,8 @@ export class MyApp {
     });
 
     this.tab1 = PostsPage;
-    this.tab2 = LikesPage;
-    this.tab3 = FavoritesPage;
+    this.tab2 = DarkPostsPage;
+    this.tab3 = LightPostsPage;
   }
 
   openNewPostModal() {
