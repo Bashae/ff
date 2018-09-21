@@ -1,16 +1,23 @@
 post {
 
-    .button--favorite {
+    .button--favorite, .button--share {
         background: transparent;
         box-shadow: none;
         position: absolute;
         top: 0;
-        left: 0;
         color: rgba(255, 255, 255, .25);
 
         &.active {
             color: #fff;
         }
+    }
+
+    .button--favorite {
+        left: 0;
+    }
+
+    .button--share {
+        right: 0;
     }
 
     ul {

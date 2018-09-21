@@ -34,7 +34,7 @@ export class PostsPage {
           console.log('b');
           let post = {
             background: '011',
-            content: 'Hello World',
+            content: 'Hello World, This is going.',
             id: 1,
             favorites: 10,
             likes: 10,
