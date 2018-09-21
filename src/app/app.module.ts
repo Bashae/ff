@@ -10,6 +10,7 @@ import { FavoritesPage } from '../pages/favorites/favorites';
 import { LikesPage } from '../pages/likes/likes';
 import { PostsPage } from '../pages/posts/posts';
 import { PostComponent } from '../components/post/post';
+import { SinogramComponent } from '../components/sinogram/sinogram';
 import { NewPostPage } from '../pages/new-post/new-post';
 
 import { AngularFireModule } from 'angularfire2';
@@ -42,6 +43,7 @@ export const firebaseConfig = {
     LoginPage,
     PostsPage,
     PostComponent,
+    SinogramComponent,
     NewPostPage,
     RegistrationPage,
     SidebarPage,
@@ -62,6 +64,7 @@ export const firebaseConfig = {
     LoginPage,
     PostsPage,
     PostComponent,
+    SinogramComponent,
     NewPostPage,
     RegistrationPage,
     SidebarPage,
