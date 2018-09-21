@@ -1,5 +1,8 @@
 <ion-card class="card-with-background">
   <img src="/assets/imgs/backgrounds/{{cardBackground}}.jpg" alt="">
+  <button ion-button icon-only class="button--favorite" (click)="favoritePost(postItem)" [class.active]="favorited">
+    <ion-icon name="star"></ion-icon>
+  </button>
   <div class="card-title" [style.backgroundColor]="cardColor" [style.color]="cardTextColor">
     {{text}}
   </div>

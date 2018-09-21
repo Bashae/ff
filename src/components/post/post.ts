@@ -64,27 +64,29 @@ export class PostComponent {
   //   this.liked = 
   // }
 
-  // favoritePost(post) {
-  //   if(this.auth.user) {
-  //     if(this.favorited) {
-  //       this.favorited = false;
-  //       this.favoriteCount--;
-  //       post.favorites = this.favoriteCount;
-  //       this.postService.unfavoritePost(post);
-  //     } else {
-  //       this.favorited = true;
-  //       this.favoriteCount++;
-  //       post.favorites = this.favoriteCount;
-  //       this.postService.favoritePost(post);
-  //     }
-  //   } else {
-  //     if ( this.noAuthAttempt < 3 ) {
-  //       this.noAuthAttempt++;
-  //     } else {
-  //       this.navCtrl.push(LandingPage);
-  //     }
-  //   }
-  // }
+  favoritePost(post) {
+    this.favorited = true;
+
+    if(this.auth.user) {
+      if(this.favorited) {
+        this.favorited = false;
+        this.favoriteCount--;
+        post.favorites = this.favoriteCount;
+        this.postService.unfavoritePost(post);
+      } else {
+        this.favorited = true;
+        this.favoriteCount++;
+        post.favorites = this.favoriteCount;
+        this.postService.favoritePost(post);
+      }
+    } else {
+      if ( this.noAuthAttempt < 3 ) {
+        this.noAuthAttempt++;
+      } else {
+        this.navCtrl.push(LandingPage);
+      }
+    }
+  }
 
   likePost( post, typed ) {
     if ( this.auth.user ) {

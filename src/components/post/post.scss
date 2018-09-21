@@ -1,15 +1,15 @@
 post {
-    .button--like.liked {
-        .ion-md-heart-outline:before {
-            content: "\f308";
-            color: #a80019;
-        }
-    }
 
-    .button--favorite.favorited {
-        .ion-md-star-outline:before {
-            content: "\f384";
-            color: #a80019;
+    .button--favorite {
+        background: transparent;
+        box-shadow: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: rgba(255, 255, 255, .25);
+
+        &.active {
+            color: #fff;
         }
     }
 
