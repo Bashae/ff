@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
+import { Post } from '../../app/post';
 
 @IonicPage()
 @Component({
@@ -24,12 +25,27 @@ export class PostsPage {
     this.postService.getStartPosts()
       .then(res => {
         this.posts = [];
-        res.docs.forEach(doc => {
-          this.posts.push(doc.data())
-          this.lastItem = doc;
-        })
-
-      });
+        if(res.docs.length > 0) {
+          res.docs.forEach(doc => {
+            this.posts.push(doc.data())
+            this.lastItem = doc;
+          })
+        } else {
+          console.log('b');
+          let post = {
+            background: '011',
+            content: 'Hello World',
+            id: 1,
+            favorites: 10,
+            likes: 10,
+            overlay_color: 'rgba(0, 0, 0, .35)',
+            text_color: 'rgba(255, 255, 255)',
+            timestamp: '12345',
+            u_id: '1'
+          };
+          this.posts.push(post);
+        }
+      })
   }
 
   doInfinite(evt) {
