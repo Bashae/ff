@@ -58,8 +58,12 @@ export class MyApp {
       this.nav.push(PostsPage);
     }
     if(page === 'Landing') {
-      this.footer = false;
-      this.nav.push(LandingPage);
+      if(this.auth.user) {
+        this.logOut();
+      } else {
+        this.footer = false;
+        this.nav.push(LandingPage);
+      }
     }
   }
 

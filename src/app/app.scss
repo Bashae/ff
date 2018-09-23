@@ -45,6 +45,13 @@
     right: 5px;
 }
 
+.button--home {
+    color: #424242;
+    background-color: transparent;
+    box-shadow: none;
+    float: left;
+}
+
 .button--menu-close,
 .button--modal-close {
     position: absolute;
@@ -54,6 +61,20 @@
     z-index: 5;
     box-shadow: none !important;
     color: #333;
+}
+
+.toolbar-title-md {
+    font-size: 16px;
+    padding-left: 0;
+    top: 15px;
+    position: relative;
+}
+
+.button--login-status {
+    right: 50px;
+    &.active {
+        color: indianred;
+    }
 }
 
 button.button--edit.button.button-md.button-default.button-default-md:hover {

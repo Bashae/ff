@@ -48,25 +48,21 @@ export class PostComponent {
             tempType = doc.data().type;  
           });
           this.type = tempType;
-          console.log(this.liked);
-          console.log(this.type)
         }
       });
 
-      // let isFavorited = this.postService.getUserFavorites(this.postItem.id);
-      // isFavorited.then(res => {
-      //   this.favorited = res.empty ? false : true;
-      // })
+      let isFavorited = this.postService.getUserFavorites(this.postItem.id);
+      isFavorited.then(res => {
+        if(res.empty) {
+          this.favorited = false;
+        } else {
+          this.favorited = true;
+        }
+      })
     }
   }
 
-  // returnType(list) {
-  //   this.liked = 
-  // }
-
   favoritePost(post) {
-    this.favorited = true;
-
     if(this.auth.user) {
       if(this.favorited) {
         this.favorited = false;

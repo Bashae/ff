@@ -8,7 +8,7 @@ export class SinogramComponent {
   finalCount: any;
 
   constructor() {
-    let goodLikes = 250;
+    let goodLikes = 5000;
     // Receive Good Likes
     let badLikes = 1000;
     // Receive Bad Likes
@@ -25,5 +25,4 @@ export class SinogramComponent {
       this.finalCount = (50 - this.finalCount) + "%";
     }
   }
-
 }
