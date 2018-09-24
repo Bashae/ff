@@ -36,7 +36,7 @@ export class PostComponent {
     this.cardColor = this.postItem.overlay_color;
     this.cardTextColor = this.postItem.text_color;
 
-    if(this.auth.user) {
+    if(this.auth.isLoggedIn) {
       let isLiked = this.postService.getUserLikes(this.postItem.id);
       isLiked.then(res => {
         if(res.empty) {
@@ -63,7 +63,7 @@ export class PostComponent {
   }
 
   favoritePost(post) {
-    if(this.auth.user) {
+    if(this.auth.isLoggedIn) {
       if(this.favorited) {
         this.favorited = false;
         this.favoriteCount--;
@@ -85,7 +85,7 @@ export class PostComponent {
   }
 
   likePost( post, typed ) {
-    if ( this.auth.user ) {
+    if ( this.auth.isLoggedIn ) {
       if ( this.liked ) {
         if ( this.type == 'good' ) {
           if (typed == 'good') {

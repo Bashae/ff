@@ -33,7 +33,7 @@
         <ion-title>
             What's your stuff?
         </ion-title>
-        <button ion-button icon-only class="button--edit button--login-status" [class.active]="auth.user" (click)="goToPage('Landing')">
+        <button ion-button icon-only class="button--edit button--login-status" [class.active]="auth.isLoggedIn" (click)="goToPage('Landing')">
             <ion-icon name='power'></ion-icon>
         </button>
         <button ion-button icon-only class="button--edit" (click)="openNewPostModal()">

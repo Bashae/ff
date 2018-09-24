@@ -5,17 +5,29 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthProvider {
   public user: firebase.User;
-  public isLoggedIn: boolean = false;
+  public isLoggedIn: boolean;
 
   constructor(
     public afAuth: AngularFireAuth
     ) {
-    afAuth.authState.subscribe(user => {
-      this.user = user;
+      this.setAuth();
+    }
+
+  setAuth() {
+    this.afAuth.authState.subscribe(user => {
+      
       if(user) {
         this.isLoggedIn = true;
+        this.user = user;
+      } else {
+        this.isLoggedIn = false;
+        this.user = null;
       }
     })
+  }
+
+  getUserInfo() {
+    return this.user;
   }
 
   signInWithEmail(credentials) {

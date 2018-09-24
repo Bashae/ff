@@ -16,14 +16,22 @@ page-new-post {
     //     background: #a80019 !important;
     // }
     
-    button.button {
-        background: #333;
-        color: #ddd;
-        padding: 25px;
+    // button.button {
+    //     background: #333;
+    //     color: #ddd;
+    //     padding: 25px;
 
-        &:hover {
-            color: #ddd;
-        }
+    //     &:hover {
+    //         color: #ddd;
+    //     }
+    // }
+
+    .button--camera {
+        background: transparent;
+        color: rgba(255, 255, 255, .5);
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     .image-grid {

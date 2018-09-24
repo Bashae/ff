@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { AuthProvider } from '../../providers/auth/auth';
+import { PostProvider } from '../../providers/post/post';
+
 @Component({
   selector: 'sinogram',
   templateUrl: 'sinogram.html'
@@ -7,22 +10,38 @@ import { Component } from '@angular/core';
 export class SinogramComponent {
   finalCount: any;
 
-  constructor() {
-    let goodLikes = 5000;
-    // Receive Good Likes
-    let badLikes = 1000;
-    // Receive Bad Likes
-    let totalLikes = goodLikes + badLikes;
+  constructor(
+    public auth: AuthProvider, 
+    public postService: PostProvider
+    ) {
+    this.finalCount = "50%";
 
-    let totalInFrame = 0;
-    if(goodLikes > badLikes) {
-      totalInFrame = goodLikes - badLikes;
-      this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
-      this.finalCount = (50 + this.finalCount) + "%";
-    } else {
-      totalInFrame = badLikes - goodLikes;
-      this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
-      this.finalCount = (50 - this.finalCount) + "%";
+    if(this.auth.isLoggedIn) {
+      let goodLikeCount, badLikeCount, totalLikes;
+      let goodLikes = this.postService.getGoodLikes();
+      goodLikes.then(res => {
+        goodLikeCount = res.docs.length;    
+      })
+      let badLikes = this.postService.getBadLikes();
+      badLikes.then(res => {
+        badLikeCount = res.docs.length;
+      })
+      Promise.all([goodLikes, badLikes]).then(res => {
+        let totalInFrame = 0;
+        let totalLikes = goodLikeCount + badLikeCount;
+
+        if(goodLikeCount > badLikeCount) {
+          totalInFrame = goodLikeCount - badLikeCount;
+          this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
+          this.finalCount = (50 + this.finalCount);
+        } else {
+          totalInFrame = badLikeCount - goodLikeCount;
+          this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
+          this.finalCount = (50 - this.finalCount);
+        }
+
+        this.finalCount = Math.round(this.finalCount) + "%";
+      })
     }
   }
 }

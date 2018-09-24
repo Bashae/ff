@@ -3,8 +3,6 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { FavoritesPage } from '../pages/favorites/favorites';
-import { LikesPage } from '../pages/likes/likes';
 import { PostsPage } from '../pages/posts/posts';
 
 import { ModalController } from 'ionic-angular';
@@ -20,7 +18,6 @@ import { LightPostsPage } from '../pages/light-posts/light-posts';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   footer: boolean = true;
-  // rootPage: any = PostsPage;
   tab1: any;
   tab2: any;
   tab3: any;
@@ -36,6 +33,8 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
+      this.auth.setAuth();
+      console.log(this.auth.isLoggedIn)
     });
 
     this.tab1 = PostsPage;
@@ -44,7 +43,7 @@ export class MyApp {
   }
 
   openNewPostModal() {
-    if ( this.auth.user ) {
+    if ( this.auth.isLoggedIn ) {
       const modal = this.modalCtrl.create(NewPostPage);
       modal.present();
     } else {
@@ -58,7 +57,7 @@ export class MyApp {
       this.nav.push(PostsPage);
     }
     if(page === 'Landing') {
-      if(this.auth.user) {
+      if(this.auth.isLoggedIn) {
         this.logOut();
       } else {
         this.footer = false;

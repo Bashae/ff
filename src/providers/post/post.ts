@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs-compat';
 
 import { Post } from "../../app/post";
 import { AuthProvider } from '../auth/auth';
-import { DateTime } from 'ionic-angular';
 
 @Injectable()
 export class PostProvider {
@@ -170,6 +168,23 @@ export class PostProvider {
     return this.likesCollection.ref
       .where('u_id', '==', this.auth.user.uid)
       .where('p_id', '==', postId)
+      .get();
+  }
+
+  getGoodLikes() {
+    console.log('testing likes things');
+    console.log(this.auth.isLoggedIn);
+    console.log(this.auth.user)
+    return this.likesCollection.ref
+      .where('u_id', '==', this.auth.user.uid)
+      .where('type', '==', 'good')
+      .get();
+  }
+
+  getBadLikes() {
+    return this.likesCollection.ref
+      .where('u_id', '==', this.auth.user.uid)
+      .where('type', '==', 'bad')
       .get();
   }
 

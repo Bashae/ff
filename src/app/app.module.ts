@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, NavController, NavParams } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -26,6 +26,7 @@ import { PostProvider } from '../providers/post/post';
 
 import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
 import { LightPostsPage } from '../pages/light-posts/light-posts';
+import { BackgroundModalPage } from '../pages/background-modal/background-modal';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -39,6 +40,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
+    BackgroundModalPage,
     HomePage,
     FavoritesPage,
     LandingPage,
@@ -62,6 +64,7 @@ export const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    BackgroundModalPage,
     HomePage,
     FavoritesPage,
     LightPostsPage,
@@ -78,13 +81,13 @@ export const firebaseConfig = {
     HeaderComponent
   ],
   providers: [
+    AuthProvider,
+    PostProvider,
     AngularFireAuth,
     AngularFirestore,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider,
-    PostProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

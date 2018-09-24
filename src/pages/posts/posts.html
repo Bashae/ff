@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <sinogram></sinogram>
+  <sinogram *ngIf="auth && auth.isLoggedIn"></sinogram>
   <post *ngFor="let post of posts" [postItem]="post"></post>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!hideScroll">

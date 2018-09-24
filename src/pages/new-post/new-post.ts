@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
 import { Post } from '../../app/post';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { BackgroundModalPage } from '../../pages/background-modal/background-modal';
 
 @IonicPage()
 @Component({
@@ -21,19 +22,26 @@ export class NewPostPage {
   colorToggle: boolean = false;
   textToggle: boolean = false;
   overlayToggle: boolean = false;
+  newPost: any = 'text';
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public viewCtrl: ViewController,
     public postService: PostProvider,
-    public afs: AngularFirestore
+    public afs: AngularFirestore,
+    public modalCtrl: ModalController
   ) {
     // this.postItem = "hello world";
     this.cardBackground = "010";
     this.cardText       = "Your sin will go here.";
     this.cardColor      = "rgba(255, 255, 255, 0.65)";
     this.cardTextColor  = "rgb(255, 255, 255)";
+  }
+
+  openBackgroundModal() {
+    const modal = this.modalCtrl.create(BackgroundModalPage);
+    modal.present();
   }
 
   dismissModal() {
