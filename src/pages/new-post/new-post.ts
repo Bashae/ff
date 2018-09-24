@@ -36,8 +36,8 @@ export class NewPostPage {
     // this.postItem = "hello world";
     this.cardBackground = "010";
     this.cardText       = "Your sin will go here.";
-    this.cardColor      = "rgba(255, 255, 255, 0.65)";
-    this.cardTextColor  = "rgb(255, 255, 255)";
+    this.cardColor      = "rgba(0, 0, 0, 0.65)";
+    this.cardTextColor  = "#ddd";
 
     this.colorsArr = [[
       {'hex': '#330000', 'rgb': '51, 0, 0'},

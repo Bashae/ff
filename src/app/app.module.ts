@@ -5,9 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { FavoritesPage } from '../pages/favorites/favorites';
-import { LikesPage } from '../pages/likes/likes';
 import { PostsPage } from '../pages/posts/posts';
 import { PostComponent } from '../components/post/post';
 import { SinogramComponent } from '../components/sinogram/sinogram';
@@ -17,20 +14,13 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LandingPage } from '../pages/landing/landing';
-import { SidebarPage } from '../pages/sidebar/sidebar';
 import { LoginPage } from '../pages/login/login';
 import { RegistrationPage } from '../pages/registration/registration';
 import { AuthProvider } from '../providers/auth/auth';
-import { HeaderComponent } from '../components/header/header';
 import { PostProvider } from '../providers/post/post';
-
-import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
-import { LightPostsPage } from '../pages/light-posts/light-posts';
-import { BackgroundModalPage } from '../pages/background-modal/background-modal';
 
 import { AdMobFree } from '@ionic-native/admob-free';
 import { Events } from 'ionic-angular';
-import { ColorColumnComponent } from '../components/color-column/color-column';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -44,22 +34,13 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    BackgroundModalPage,
-    HomePage,
-    FavoritesPage,
     LandingPage,
-    LikesPage,
-    LightPostsPage,
-    DarkPostsPage,
     LoginPage,
     PostsPage,
     PostComponent,
     SinogramComponent,
     NewPostPage,
-    RegistrationPage,
-    SidebarPage,
-    HeaderComponent,
-    ColorColumnComponent
+    RegistrationPage
   ],
   imports: [
     BrowserModule,
@@ -69,22 +50,13 @@ export const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    BackgroundModalPage,
-    HomePage,
-    FavoritesPage,
-    LightPostsPage,
-    DarkPostsPage,
     LandingPage,
-    LikesPage,
     LoginPage,
     PostsPage,
     PostComponent,
     SinogramComponent,
     NewPostPage,
     RegistrationPage,
-    SidebarPage,
-    HeaderComponent,
-    ColorColumnComponent
   ],
   providers: [
     AuthProvider,
