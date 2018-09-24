@@ -8,6 +8,7 @@ import { PostProvider } from '../../providers/post/post';
   templateUrl: 'sinogram.html'
 })
 export class SinogramComponent {
+  isNeutral: 'neutral';
   finalCount: any;
 
   constructor(

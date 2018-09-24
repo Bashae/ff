@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
 import { AuthProvider } from '../../providers/auth/auth';
 
@@ -17,8 +17,16 @@ export class PostsPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public auth: AuthProvider,
-    public postService: PostProvider
+    public postService: PostProvider,
+    public events: Events
   ) {
+    this.getStartPosts();
+    this.events.subscribe('post:created', (res) => {
+      this.getStartPosts();
+    });
+  }
+
+  getStartPosts() {
     this.postService.getStartPosts()
       .then(res => {
         this.posts = [];

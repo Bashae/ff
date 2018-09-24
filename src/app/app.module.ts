@@ -29,6 +29,7 @@ import { LightPostsPage } from '../pages/light-posts/light-posts';
 import { BackgroundModalPage } from '../pages/background-modal/background-modal';
 
 import { AdMobFree } from '@ionic-native/admob-free';
+import { Events } from 'ionic-angular';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -88,6 +89,7 @@ export const firebaseConfig = {
     PostProvider,
     AngularFireAuth,
     AngularFirestore,
+    Events,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

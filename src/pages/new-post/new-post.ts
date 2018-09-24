@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ViewController, ModalController } 
 import { PostProvider } from '../../providers/post/post';
 import { Post } from '../../app/post';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { BackgroundModalPage } from '../../pages/background-modal/background-modal';
 
 @IonicPage()
 @Component({
@@ -39,11 +38,6 @@ export class NewPostPage {
     this.cardTextColor  = "rgb(255, 255, 255)";
   }
 
-  openBackgroundModal() {
-    const modal = this.modalCtrl.create(BackgroundModalPage);
-    modal.present();
-  }
-
   dismissModal() {
     this.viewCtrl.dismiss();
   }
@@ -62,6 +56,7 @@ export class NewPostPage {
       
       sin.content = this.cardText;
       this.postService.createPost(sin);
+      this.dismissModal();
     }
   }
 

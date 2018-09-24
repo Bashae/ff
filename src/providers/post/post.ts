@@ -4,6 +4,7 @@ import { Observable } from 'rxjs-compat';
 
 import { Post } from "../../app/post";
 import { AuthProvider } from '../auth/auth';
+import { Events } from 'ionic-angular';
 
 @Injectable()
 export class PostProvider {
@@ -21,7 +22,7 @@ export class PostProvider {
 
   lastDoc: AngularFirestoreDocument;
 
-  constructor(public afs: AngularFirestore, public auth: AuthProvider) {
+  constructor(public afs: AngularFirestore, public auth: AuthProvider, public events: Events) {
     this.postsCollection = this.afs.collection('posts');
     this.likesCollection = this.afs.collection('likes');
     this.favoritesCollection = this.afs.collection('favorites');
@@ -59,15 +60,17 @@ export class PostProvider {
       .then(docRef => {
         post.id = docRef.id;
         let doc = this.afs.doc('posts/' + docRef.id);
-        doc.update(post);
+        return doc.update(post).then(res => {
+          this.events.publish('post:created');
+        })
       });
   }
 
   likePost(post: Post, type: string) {
     let doc = this.afs.doc('posts/' + post.id);
-    doc.update(post);
-
-    this.createLike(post.id, type);
+    doc.update(post).then((res) => {
+      this.createLike(post.id, type);
+    })
   }
 
   unlikePost(post: Post, type: string) {
@@ -78,17 +81,19 @@ export class PostProvider {
   }
 
   favoritePost(post: Post) {
+    console.log('what is post');
+    console.log(post);
     let doc = this.afs.doc('posts/' + post.id);
-    doc.update(post);
-
-    this.createFavorite(post.id);
+    doc.update(post).then(res => {
+      this.createFavorite(post.id);
+    })
   }
 
   unfavoritePost(post: Post) {
     let doc = this.afs.doc('posts/' + post.id);
-    doc.update(post);
-
-    this.destroyFavorite(post.id);
+    doc.update(post).then(res => {
+      this.destroyFavorite(post.id);
+    })
   }
 
   createFavorite(postId) {
