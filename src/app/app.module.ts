@@ -4,23 +4,28 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+// App And Pages
 import { MyApp } from './app.component';
+import { LandingPage } from '../pages/landing/landing';
+import { LoginPage } from '../pages/login/login';
+import { NewPostPage } from '../pages/new-post/new-post';
 import { PostsPage } from '../pages/posts/posts';
+import { RegistrationPage } from '../pages/registration/registration';
+
+// Components Go Here
 import { PostComponent } from '../components/post/post';
 import { SinogramComponent } from '../components/sinogram/sinogram';
-import { NewPostPage } from '../pages/new-post/new-post';
 
+// Native Tools
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { LandingPage } from '../pages/landing/landing';
-import { LoginPage } from '../pages/login/login';
-import { RegistrationPage } from '../pages/registration/registration';
-import { AuthProvider } from '../providers/auth/auth';
-import { PostProvider } from '../providers/post/post';
-
 import { AdMobFree } from '@ionic-native/admob-free';
 import { Events } from 'ionic-angular';
+
+// Services
+import { AuthProvider } from '../providers/auth/auth';
+import { PostProvider } from '../providers/post/post';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -36,11 +41,11 @@ export const firebaseConfig = {
     MyApp,
     LandingPage,
     LoginPage,
+    NewPostPage,
     PostsPage,
     PostComponent,
-    SinogramComponent,
-    NewPostPage,
-    RegistrationPage
+    RegistrationPage,
+    SinogramComponent
   ],
   imports: [
     BrowserModule,
@@ -52,19 +57,19 @@ export const firebaseConfig = {
     MyApp,
     LandingPage,
     LoginPage,
+    NewPostPage,
     PostsPage,
     PostComponent,
-    SinogramComponent,
-    NewPostPage,
     RegistrationPage,
+    SinogramComponent
   ],
   providers: [
-    AuthProvider,
     AdMobFree,
-    PostProvider,
+    AuthProvider,
     AngularFireAuth,
     AngularFirestore,
     Events,
+    PostProvider,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

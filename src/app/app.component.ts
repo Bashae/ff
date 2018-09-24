@@ -9,8 +9,6 @@ import { ModalController } from 'ionic-angular';
 import { NewPostPage } from '../pages/new-post/new-post';
 import { LandingPage } from '../pages/landing/landing';
 import { AuthProvider } from '../providers/auth/auth';
-import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
-import { LightPostsPage } from '../pages/light-posts/light-posts';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
@@ -20,9 +18,6 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   footer: boolean = true;
-  tab1: any;
-  tab2: any;
-  tab3: any;
   view: any;
   rootPage: any;
 
@@ -40,9 +35,6 @@ export class MyApp {
       this.auth.setAuth();
     });
 
-    this.tab1 = PostsPage;
-    this.tab2 = DarkPostsPage;
-    this.tab3 = LightPostsPage;
     this.rootPage = PostsPage;
     this.prepareAdMob();
   }

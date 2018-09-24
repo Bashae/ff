@@ -55,6 +55,7 @@ export class PostProvider {
 
     post.id = cardId;
     post.timestamp = timestamp * -1;
+    post.u_id = this.auth.user.uid;
 
     this.postsCollection.add(post)
       .then(docRef => {
@@ -69,7 +70,7 @@ export class PostProvider {
   likePost(post: Post, type: string) {
     let doc = this.afs.doc('posts/' + post.id);
     doc.update(post).then((res) => {
-      this.createLike(post.id, type);
+      this.createLike(post.id, post.u_id, type);
     })
   }
 
@@ -81,11 +82,9 @@ export class PostProvider {
   }
 
   favoritePost(post: Post) {
-    console.log('what is post');
-    console.log(post);
     let doc = this.afs.doc('posts/' + post.id);
     doc.update(post).then(res => {
-      this.createFavorite(post.id);
+      this.createFavorite(post.id, post.u_id);
     })
   }
 
@@ -96,8 +95,8 @@ export class PostProvider {
     })
   }
 
-  createFavorite(postId) {
-    let favorite = {'u_id': this.auth.user.uid, 'p_id': postId};
+  createFavorite(postId, postOwnerId) {
+    let favorite = {'u_id': this.auth.user.uid, 'p_id': postId, 'p_own': postOwnerId};
     this.favoritesCollection.add(favorite)
       .then(docRef => {
         console.log('document created')
@@ -127,9 +126,9 @@ export class PostProvider {
     });
   }
 
-  createLike(postId, type) {
+  createLike(postId, postOwnerId, type) {
     console.log('create like');
-    let like = {'u_id': this.auth.user.uid, 'p_id': postId, 'type': type};
+    let like = {'u_id': this.auth.user.uid, 'p_id': postId, 'p_own': postOwnerId, 'type': type};
     this.likesCollection.add(like)
       .then(docRef => {
         console.log('document created')
@@ -169,26 +168,16 @@ export class PostProvider {
     });
   }
 
-  getUserLikes(postId) {
-    return this.likesCollection.ref
-      .where('u_id', '==', this.auth.user.uid)
-      .where('p_id', '==', postId)
-      .get();
-  }
-
   getGoodLikes() {
-    console.log('testing likes things');
-    console.log(this.auth.isLoggedIn);
-    console.log(this.auth.user)
     return this.likesCollection.ref
-      .where('u_id', '==', this.auth.user.uid)
+      .where('p_own', '==', this.auth.user.uid)
       .where('type', '==', 'good')
       .get();
   }
 
   getBadLikes() {
     return this.likesCollection.ref
-      .where('u_id', '==', this.auth.user.uid)
+      .where('p_own', '==', this.auth.user.uid)
       .where('type', '==', 'bad')
       .get();
   }

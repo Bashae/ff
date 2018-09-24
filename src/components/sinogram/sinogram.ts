@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { AuthProvider } from '../../providers/auth/auth';
 import { PostProvider } from '../../providers/post/post';
 
@@ -21,15 +20,24 @@ export class SinogramComponent {
       let goodLikeCount, badLikeCount, totalLikes;
       let goodLikes = this.postService.getGoodLikes();
       goodLikes.then(res => {
-        goodLikeCount = res.docs.length;    
+        console.log('is this doing anything');
+        goodLikeCount = res.docs.length; 
+        console.log('res good');
+        res.docs.forEach(item => {
+          console.log(item)
+        })
       })
       let badLikes = this.postService.getBadLikes();
       badLikes.then(res => {
         badLikeCount = res.docs.length;
+        console.log('res bad')
+        res.docs.forEach(item => {
+          console.log(item)
+        })
       })
       Promise.all([goodLikes, badLikes]).then(res => {
         let totalInFrame = 0;
-        let totalLikes = goodLikeCount + badLikeCount;
+        totalLikes = goodLikeCount + badLikeCount;
 
         if(goodLikeCount > badLikeCount) {
           totalInFrame = goodLikeCount - badLikeCount;

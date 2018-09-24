@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 import { RegistrationPage } from '../registration/registration';
 import { AuthProvider } from '../../providers/auth/auth';
 
-import { HomePage } from '../home/home';
 import { PostsPage } from '../posts/posts';
 
 @IonicPage()
