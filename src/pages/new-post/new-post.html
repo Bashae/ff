@@ -39,7 +39,7 @@
   </div>
   
   <div [ngSwitch]="newPost">
-    <ion-item *ngSwitchCase="'text'">
+    <ion-item *ngSwitchCase="'text'" class="input-container--textarea">
       <ion-textarea placeholder="My Sin is..." [(ngModel)]="cardText"></ion-textarea>
     </ion-item>
     <ion-list *ngSwitchCase="'background'">
@@ -64,57 +64,61 @@
           <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt="" (click)="changeBackgroundImage('020')" class="gallery-image" [class.active]="cardBackground == '020'"></ion-col>
           <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt="" (click)="changeBackgroundImage('021')" class="gallery-image" [class.active]="cardBackground == '021'"></ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/022.jpg" alt="" (click)="changeBackgroundImage('022')" class="gallery-image" [class.active]="cardBackground == '022'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/023.jpg" alt="" (click)="changeBackgroundImage('023')" class="gallery-image" [class.active]="cardBackground == '023'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/024.jpg" alt="" (click)="changeBackgroundImage('024')" class="gallery-image" [class.active]="cardBackground == '024'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/025.jpg" alt="" (click)="changeBackgroundImage('025')" class="gallery-image" [class.active]="cardBackground == '025'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/026.jpg" alt="" (click)="changeBackgroundImage('026')" class="gallery-image" [class.active]="cardBackground == '026'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/027.jpg" alt="" (click)="changeBackgroundImage('027')" class="gallery-image" [class.active]="cardBackground == '027'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/028.jpg" alt="" (click)="changeBackgroundImage('028')" class="gallery-image" [class.active]="cardBackground == '028'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/029.jpg" alt="" (click)="changeBackgroundImage('029')" class="gallery-image" [class.active]="cardBackground == '029'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/030.jpg" alt="" (click)="changeBackgroundImage('030')" class="gallery-image" [class.active]="cardBackground == '030'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/031.jpg" alt="" (click)="changeBackgroundImage('031')" class="gallery-image" [class.active]="cardBackground == '031'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/032.jpg" alt="" (click)="changeBackgroundImage('032')" class="gallery-image" [class.active]="cardBackground == '032'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/033.jpg" alt="" (click)="changeBackgroundImage('033')" class="gallery-image" [class.active]="cardBackground == '033'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/034.jpg" alt="" (click)="changeBackgroundImage('034')" class="gallery-image" [class.active]="cardBackground == '034'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/035.jpg" alt="" (click)="changeBackgroundImage('035')" class="gallery-image" [class.active]="cardBackground == '035'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/036.jpg" alt="" (click)="changeBackgroundImage('036')" class="gallery-image" [class.active]="cardBackground == '036'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/037.jpg" alt="" (click)="changeBackgroundImage('037')" class="gallery-image" [class.active]="cardBackground == '037'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/038.jpg" alt="" (click)="changeBackgroundImage('038')" class="gallery-image" [class.active]="cardBackground == '038'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/039.jpg" alt="" (click)="changeBackgroundImage('039')" class="gallery-image" [class.active]="cardBackground == '039'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/040.jpg" alt="" (click)="changeBackgroundImage('040')" class="gallery-image" [class.active]="cardBackground == '040'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/041.jpg" alt="" (click)="changeBackgroundImage('041')" class="gallery-image" [class.active]="cardBackground == '041'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/042.jpg" alt="" (click)="changeBackgroundImage('042')" class="gallery-image" [class.active]="cardBackground == '042'"></ion-col>
+        </ion-row>
       </ion-grid>
     </ion-list>
     <ion-list *ngSwitchCase="'overlay'">
       <ion-grid>
-        <ion-row>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:red;margin:0 auto;" (click)="changeTextBackgroundColor('255, 0, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:blue;margin:0 auto;" (click)="changeTextBackgroundColor('0, 0, 255')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:green;margin:0 auto;" (click)="changeTextBackgroundColor('0, 128, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:yellow;margin:0 auto;" (click)="changeTextBackgroundColor('255, 255, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:black;margin:0 auto;" (click)="changeTextBackgroundColor('0, 0, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:grey;margin:0 auto;" (click)="changeTextBackgroundColor('128, 128, 128')"></div>
+        <ion-row *ngFor="let colors of colorsArr, let i = index">
+          <ion-col *ngFor="let color of colors" class="color-column">
+            <div [style.backgroundColor]="color.hex" (click)="changeTextBackgroundColor(color.rgb)"></div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-list>
     <ion-list *ngSwitchCase="'color'">
-      <input type="color" name="favcolor" value="#ff0000">
       <ion-grid>
-        <ion-row>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:red;margin:0 auto;" (click)="changeTextColor('255, 0, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:blue;margin:0 auto;" (click)="changeTextColor('0, 0, 255')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:green;margin:0 auto;" (click)="changeTextColor('0, 128, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:yellow;margin:0 auto;" (click)="changeTextColor('255, 255, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:black;margin:0 auto;" (click)="changeTextColor('0, 0, 0')"></div>
-          </ion-col>
-          <ion-col col-2>
-            <div style="width:100%;height:25px;display:block;background:grey;margin:0 auto;" (click)="changeTextColor('128, 128, 128')"></div>
+        <ion-row *ngFor="let colors of colorsArr, let i = index">
+          <ion-col *ngFor="let color of colors" class="color-column">
+            <div [style.backgroundColor]="color.hex" (click)="changeTextColor(color.rgb)"></div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-list>
   </div>
-  <button ion-button (click)="submitPost()" style="float:right;">Submit Button</button>
+  <button ion-button (click)="submitPost()" style="margin-right: 10px;float:right;">Submit Button</button>
 </ion-content>

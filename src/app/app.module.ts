@@ -30,6 +30,7 @@ import { BackgroundModalPage } from '../pages/background-modal/background-modal'
 
 import { AdMobFree } from '@ionic-native/admob-free';
 import { Events } from 'ionic-angular';
+import { ColorColumnComponent } from '../components/color-column/color-column';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -57,7 +58,8 @@ export const firebaseConfig = {
     NewPostPage,
     RegistrationPage,
     SidebarPage,
-    HeaderComponent
+    HeaderComponent,
+    ColorColumnComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,8 @@ export const firebaseConfig = {
     NewPostPage,
     RegistrationPage,
     SidebarPage,
-    HeaderComponent
+    HeaderComponent,
+    ColorColumnComponent
   ],
   providers: [
     AuthProvider,

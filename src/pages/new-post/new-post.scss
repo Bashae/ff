@@ -4,6 +4,9 @@ page-new-post {
     //     margin: 0 auto;
     //     width: 96%;
     // }
+    .input-container--textarea {
+        padding-right: 10px;
+    }
     .pull-right {
         float: right;
     }
@@ -16,6 +19,18 @@ page-new-post {
         box-sizing: border-box;
         &.active {
             box-shadow: 0 0 8px 2px blue;
+        }
+    }
+
+    .color-column {
+        padding: 0;
+        width: 11%;
+
+        div {
+            width:100%;
+            height:25px;
+            display:block;
+            margin:0 auto;
         }
     }
 
@@ -53,8 +68,8 @@ page-new-post {
             
         }
         img {
-            min-width: 100%;
-            min-height: 100%;
+            width: 100%;
+            height: 100%;
         }
     }
 }

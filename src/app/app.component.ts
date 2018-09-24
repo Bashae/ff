@@ -85,6 +85,7 @@ export class MyApp {
 
   logOut() {
     this.auth.logOut();
+    this.goToPage('Posts');
   }
 }
 
