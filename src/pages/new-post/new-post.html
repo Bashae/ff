@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Tell us a Thing.</ion-title>
+    <ion-title>Tell us your sin.</ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismissModal()">
         <ion-icon name="close"></ion-icon>
@@ -45,24 +45,24 @@
     <ion-list *ngSwitchCase="'background'">
       <ion-grid class="image-grid">
         <ion-row>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/010.jpg" alt="" (click)="changeBackgroundImage('010')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/011.jpg" alt="" (click)="changeBackgroundImage('011')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/012.jpg" alt="" (click)="changeBackgroundImage('012')"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/010.jpg" alt="" (click)="changeBackgroundImage('010')" class="gallery-image" [class.active]="cardBackground == '010'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/011.jpg" alt="" (click)="changeBackgroundImage('011')" class="gallery-image" [class.active]="cardBackground == '011'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/012.jpg" alt="" (click)="changeBackgroundImage('012')" class="gallery-image" [class.active]="cardBackground == '012'"></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/013.jpg" alt="" (click)="changeBackgroundImage('013')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/014.jpg" alt="" (click)="changeBackgroundImage('014')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/015.jpg" alt="" (click)="changeBackgroundImage('015')"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/013.jpg" alt="" (click)="changeBackgroundImage('013')" class="gallery-image" [class.active]="cardBackground == '013'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/014.jpg" alt="" (click)="changeBackgroundImage('014')" class="gallery-image" [class.active]="cardBackground == '014'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/015.jpg" alt="" (click)="changeBackgroundImage('015')" class="gallery-image" [class.active]="cardBackground == '015'"></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/016.jpg" alt="" (click)="changeBackgroundImage('016')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/017.jpg" alt="" (click)="changeBackgroundImage('017')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/018.jpg" alt="" (click)="changeBackgroundImage('018')"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/016.jpg" alt="" (click)="changeBackgroundImage('016')" class="gallery-image" [class.active]="cardBackground == '016'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/017.jpg" alt="" (click)="changeBackgroundImage('017')" class="gallery-image" [class.active]="cardBackground == '017'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/018.jpg" alt="" (click)="changeBackgroundImage('018')" class="gallery-image" [class.active]="cardBackground == '018'"></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/019.jpg" alt="" (click)="changeBackgroundImage('019')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt="" (click)="changeBackgroundImage('020')"></ion-col>
-          <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt="" (click)="changeBackgroundImage('021')"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/019.jpg" alt="" (click)="changeBackgroundImage('019')" class="gallery-image" [class.active]="cardBackground == '019'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt="" (click)="changeBackgroundImage('020')" class="gallery-image" [class.active]="cardBackground == '020'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt="" (click)="changeBackgroundImage('021')" class="gallery-image" [class.active]="cardBackground == '021'"></ion-col>
         </ion-row>
       </ion-grid>
     </ion-list>

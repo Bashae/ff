@@ -12,6 +12,17 @@ page-new-post {
         text-align: center;
     }
 
+    .gallery-image {
+        box-sizing: border-box;
+        &.active {
+            box-shadow: 0 0 8px 2px blue;
+        }
+    }
+
+    ion-icon {
+        color: #333;
+    }
+
     // .button-default {
     //     background: #a80019 !important;
     // }

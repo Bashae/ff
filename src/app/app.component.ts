@@ -12,6 +12,8 @@ import { AuthProvider } from '../providers/auth/auth';
 import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
 import { LightPostsPage } from '../pages/light-posts/light-posts';
 
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,24 +24,39 @@ export class MyApp {
   tab2: any;
   tab3: any;
   view: any;
+  rootPage: any;
 
   constructor(
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen, 
     public modalCtrl: ModalController,
-    public auth: AuthProvider
+    public auth: AuthProvider,
+    private admob: AdMobFree
   ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
       this.auth.setAuth();
-      console.log(this.auth.isLoggedIn)
     });
 
     this.tab1 = PostsPage;
     this.tab2 = DarkPostsPage;
     this.tab3 = LightPostsPage;
+    this.rootPage = PostsPage;
+    this.prepareAdMob();
+  }
+
+  prepareAdMob() {
+    const bannerConfig: AdMobFreeBannerConfig = {
+      id: 'ca-app-pub-8071301998700750/2198021539',
+      isTesting: true,
+      autoShow: true
+     };
+     this.admob.banner.config(bannerConfig);
+     this.admob.banner.prepare()
+       .then(() => {})
+       .catch(e => console.log(e));
   }
 
   openNewPostModal() {

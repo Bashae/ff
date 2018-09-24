@@ -9,42 +9,14 @@
   <div class="card-title" [style.backgroundColor]="cardColor" [style.color]="cardTextColor">
     {{text}}
   </div>
-  <!-- <ion-card-content> -->
-    <!-- <p class="content--main">
-      Test, something something something.
-    </p> -->
-  <!-- </ion-card-content> -->
-  <!-- <div class="card-subtitle">41 Listings</div> -->
-  <!-- <ion-row padding class="post--stati">
-    <button ion-button clear small color="dark" icon-start class="button--like" (click)="likePost(postItem)" [class.liked]="liked">
-      <ion-icon name='heart-outline' color="red"></ion-icon>
-    </button>
-    <button ion-button clear small color="dark" icon-start class="button--favorite" (click)="favoritePost(postItem)" [class.favorited]="favorited">
-      <ion-icon name='star-outline'></ion-icon>
-    </button> -->
-    <!-- <ion-col>
-      <ul style="float:right;">
-        <li *ngIf="likeCount > 0">{{likeCount}} Likes</li>
-        <li *ngIf="favoriteCount > 0">{{favoriteCount}} Favorited</li>
-      </ul>
-    </ion-col>
-  </ion-row> -->
-
-  <ion-row class="post-vote--stati">
-    <button ion-button icon-only class="button--vote-negative button--vote" [class.active]="liked == true && type == 'bad'" (click)="likePost(postItem, 'bad')">
-      <ion-icon name="flame"></ion-icon>
-      <span class="h-button-text--bottom">Condemn</span>
-    </button>
-    <button ion-button icon-only class="button--vote-positive button--vote" [class.active]="liked == true && type == 'good'" (click)="likePost(postItem, 'good')">
-      <ion-icon name="cloud"></ion-icon>
-      <span class="h-button-text--bottom">Forgive</span>
-    </button>
-  </ion-row>
-
-  <ion-card class="card-with-background" *ngIf="cardText">
-      <img src="/assets/imgs/backgrounds/{{cardBackground}}.jpg"  alt="">
-      <div class="card-title" [style.backgroundColor]="cardColor" [style.color]="cardTextColor">
-        {{cardText}}
-      </div>
-    </ion-card>
 </ion-card>
+<ion-row class="post-vote--stati">
+  <button ion-button icon-only class="button--vote-negative button--vote" [class.active]="liked == true && type == 'bad'" (click)="likePost(postItem, 'bad')">
+    <ion-icon name="flame"></ion-icon>
+    <span class="h-button-text--bottom">Condemn</span>
+  </button>
+  <button ion-button icon-only class="button--vote-positive button--vote" [class.active]="liked == true && type == 'good'" (click)="likePost(postItem, 'good')">
+    <ion-icon name="cloud"></ion-icon>
+    <span class="h-button-text--bottom">Forgive</span>
+  </button>
+</ion-row> 

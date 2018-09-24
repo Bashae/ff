@@ -28,6 +28,8 @@ import { DarkPostsPage } from '../pages/dark-posts/dark-posts';
 import { LightPostsPage } from '../pages/light-posts/light-posts';
 import { BackgroundModalPage } from '../pages/background-modal/background-modal';
 
+import { AdMobFree } from '@ionic-native/admob-free';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
   authDomain: "forbiddenfruit-92258.firebaseapp.com",
@@ -82,6 +84,7 @@ export const firebaseConfig = {
   ],
   providers: [
     AuthProvider,
+    AdMobFree,
     PostProvider,
     AngularFireAuth,
     AngularFirestore,

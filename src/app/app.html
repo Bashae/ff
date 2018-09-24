@@ -30,8 +30,8 @@
         <button ion-button icon-only class="button--home" (click)="goToPage('Posts')">
             <ion-icon name='home'></ion-icon>
         </button>
-        <ion-title>
-            What's your stuff?
+        <ion-title class="custom-title">
+            What's your sin?
         </ion-title>
         <button ion-button icon-only class="button--edit button--login-status" [class.active]="auth.isLoggedIn" (click)="goToPage('Landing')">
             <ion-icon name='power'></ion-icon>
@@ -44,8 +44,8 @@
 
 <ion-nav #content [root]="rootPage"></ion-nav>
 
-<ion-tabs *ngIf="footer">
+<!-- <ion-tabs *ngIf="footer">
     <ion-tab tabIcon="list" [root]="tab1"></ion-tab>
     <ion-tab tabIcon="flame" [root]="tab2"></ion-tab>
     <ion-tab tabIcon="cloud" [root]="tab3"></ion-tab>
-</ion-tabs>`
+</ion-tabs>` -->
