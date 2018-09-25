@@ -26,6 +26,7 @@ export class NewPostPage {
   newPost: any = 'text';
 
   colorsArr: any[];
+  initialClick: number;
 
   constructor(
     public navCtrl: NavController, 
@@ -38,9 +39,10 @@ export class NewPostPage {
   ) {
     // this.postItem = "hello world";
     this.cardBackground = "010";
-    this.cardText       = "Your sin will go here.";
+    this.cardText       = "Let it out, it will be okay.";
     this.cardColor      = "rgba(0, 0, 0, 0.65)";
     this.cardTextColor  = "#ddd";
+    this.initialClick   = 0;
     this.prepareAdMob();
 
     this.colorsArr = [[
@@ -162,6 +164,13 @@ export class NewPostPage {
       {'hex': '#FFCCE5', 'rgb': '255, 204, 229'},
       {'hex': '#FFFFFF', 'rgb': '255, 255, 255'}]
     ]
+  }
+
+  testInitialClick() {
+    if(this.initialClick === 0) {
+      this.cardText = "";
+      this.initialClick++;
+    }
   }
 
   prepareAdMob() {

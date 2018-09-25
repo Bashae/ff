@@ -40,7 +40,7 @@
   
   <div [ngSwitch]="newPost">
     <ion-item *ngSwitchCase="'text'" class="input-container--textarea">
-      <ion-textarea placeholder="My Sin is..." [(ngModel)]="cardText"></ion-textarea>
+      <ion-textarea placeholder="My Secret is..." [(ngModel)]="cardText" (focus)="testInitialClick()"></ion-textarea>
     </ion-item>
     <ion-list *ngSwitchCase="'background'">
       <ion-grid class="image-grid">

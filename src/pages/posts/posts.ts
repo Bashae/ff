@@ -77,8 +77,4 @@ export class PostsPage {
       });
   }
 
-  runThing() {
-    // console.log(this.posts);
-  }
-
 }
