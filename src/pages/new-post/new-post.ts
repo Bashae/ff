@@ -4,6 +4,8 @@ import { PostProvider } from '../../providers/post/post';
 import { Post } from '../../app/post';
 import { AngularFirestore } from 'angularfire2/firestore';
 
+import { AdMobFree } from '@ionic-native/admob-free';
+
 @IonicPage()
 @Component({
   selector: 'page-new-post',
@@ -31,13 +33,15 @@ export class NewPostPage {
     public viewCtrl: ViewController,
     public postService: PostProvider,
     public afs: AngularFirestore,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public admob: AdMobFree
   ) {
     // this.postItem = "hello world";
     this.cardBackground = "010";
     this.cardText       = "Your sin will go here.";
     this.cardColor      = "rgba(0, 0, 0, 0.65)";
     this.cardTextColor  = "#ddd";
+    this.prepareAdMob();
 
     this.colorsArr = [[
       {'hex': '#330000', 'rgb': '51, 0, 0'},
@@ -160,6 +164,11 @@ export class NewPostPage {
     ]
   }
 
+  prepareAdMob() {
+     this.admob.interstitial.config({id: 'ca-app-pub-8071301998700750/1646592856', isTesting: true, autoShow: false});
+     this.admob.interstitial.prepare().then(() => {}).catch(e => console.log(e));
+  }
+
   dismissModal() {
     this.viewCtrl.dismiss();
   }
@@ -178,6 +187,7 @@ export class NewPostPage {
       
       sin.content = this.cardText;
       this.postService.createPost(sin);
+      this.admob.interstitial.show();
       this.dismissModal();
     }
   }

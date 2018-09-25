@@ -27,7 +27,7 @@ export class MyApp {
     splashScreen: SplashScreen, 
     public modalCtrl: ModalController,
     public auth: AuthProvider,
-    private admob: AdMobFree
+    public admob: AdMobFree
   ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
@@ -36,20 +36,26 @@ export class MyApp {
     });
 
     this.rootPage = PostsPage;
-    this.prepareAdMob();
   }
 
-  prepareAdMob() {
-    const bannerConfig: AdMobFreeBannerConfig = {
-      id: 'ca-app-pub-8071301998700750/2198021539',
-      isTesting: true,
-      autoShow: true
-     };
-     this.admob.banner.config(bannerConfig);
-     this.admob.banner.prepare()
-       .then(() => {})
-       .catch(e => console.log(e));
-  }
+  // ngOnInit() {
+  //   this.prepareAdMob();
+  // }
+
+
+  // prepareAdMob() {
+  //   let bannerConfig = {
+  //     id: 'ca-app-pub-8071301998700750/2198021539',
+  //     isTesting: true,
+  //     autoShow: true
+  //    };
+  //    this.admob.banner.config(bannerConfig);
+  //    this.admob.banner.prepare()
+  //      .then(() => {
+  //        this.admob.banner.show();
+  //      })
+  //      .catch(e => console.log(e));
+  // }
 
   openNewPostModal() {
     if ( this.auth.isLoggedIn ) {

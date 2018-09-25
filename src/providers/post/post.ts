@@ -188,4 +188,11 @@ export class PostProvider {
       .where('p_id', '==', postId)
       .get();
   }
+
+  getUserLikes(postId) {
+    return this.likesCollection.ref
+      .where('u_id', '==', this.auth.user.uid)
+      .where('p_id', '==', postId)
+      .get();
+  }
 }
