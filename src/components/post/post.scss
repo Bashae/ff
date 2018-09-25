@@ -1,15 +1,23 @@
 post {
 
-    .button--favorite, .button--share {
+    .button--favorite, .button--share, .button--comment {
         background: transparent;
         box-shadow: none;
         position: absolute;
-        top: 0;
         color: rgba(255, 255, 255, .25);
 
         &.active {
             color: #fff;
         }
+    }
+
+    .button--favorite, .button--share {
+        top: 0;
+    }
+
+    .button--comment {
+        bottom: 0;
+        right: 0;
     }
 
     .button--favorite {

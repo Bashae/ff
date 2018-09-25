@@ -10,7 +10,7 @@ import { NewPostPage } from '../pages/new-post/new-post';
 import { LandingPage } from '../pages/landing/landing';
 import { AuthProvider } from '../providers/auth/auth';
 
-import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 @Component({
   templateUrl: 'app.html'

@@ -22,6 +22,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { Events } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 // Services
 import { AuthProvider } from '../providers/auth/auth';
@@ -70,6 +71,7 @@ export const firebaseConfig = {
     AngularFirestore,
     Events,
     PostProvider,
+    SocialSharing,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

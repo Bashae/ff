@@ -20,20 +20,11 @@ export class SinogramComponent {
       let goodLikeCount, badLikeCount, totalLikes;
       let goodLikes = this.postService.getGoodLikes();
       goodLikes.then(res => {
-        console.log('is this doing anything');
         goodLikeCount = res.docs.length; 
-        console.log('res good');
-        res.docs.forEach(item => {
-          console.log(item)
-        })
       })
       let badLikes = this.postService.getBadLikes();
       badLikes.then(res => {
         badLikeCount = res.docs.length;
-        console.log('res bad')
-        res.docs.forEach(item => {
-          console.log(item)
-        })
       })
       Promise.all([goodLikes, badLikes]).then(res => {
         let totalInFrame = 0;
@@ -43,14 +34,36 @@ export class SinogramComponent {
           totalInFrame = goodLikeCount - badLikeCount;
           this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
           this.finalCount = (50 + this.finalCount);
+          this.finalCount = Math.round(this.finalCount)
+          this.moveArrow(this.finalCount, true);
         } else {
           totalInFrame = badLikeCount - goodLikeCount;
           this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
           this.finalCount = (50 - this.finalCount);
+          this.finalCount = Math.round(this.finalCount)
+          this.moveArrow(this.finalCount, false);
         }
-
-        this.finalCount = Math.round(this.finalCount) + "%";
+        this.finalCount = this.finalCount + "%";
       })
+    }
+  }
+
+  moveArrow(count, isGood) {
+    let arrow = document.getElementById('dingleBerry');
+    var pos = 50;
+    var id = setInterval(frame, 20);
+
+    function frame() {
+      if (pos == count) {
+        clearInterval(id);
+      } else {
+          if(isGood) {
+            pos++;
+          } else {
+            pos--;
+          }
+          arrow.style.left = pos + '%'; 
+      }
     }
   }
 }

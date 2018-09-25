@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { LandingPage } from '../../pages/landing/landing';
 import { AuthProvider } from '../../providers/auth/auth';
 import { PostProvider } from '../../providers/post/post';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'post',
@@ -25,7 +26,8 @@ export class PostComponent {
   constructor(
     public navCtrl: NavController,
     public auth: AuthProvider,
-    public postService: PostProvider
+    public postService: PostProvider,
+    public socialSharing: SocialSharing
   ) {}
 
   ngOnInit() {
@@ -119,7 +121,11 @@ export class PostComponent {
   }
 
   sharePost() {
-    // console.log('user shared post');
+    this.socialSharing.canShareViaEmail().then(() => {
+      // Sharing via email is possible
+    }).catch(() => {
+      // Sharing via email is not possible
+    });
   }
 
   goToPage() {
