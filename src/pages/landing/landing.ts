@@ -92,12 +92,6 @@ export class LandingPage {
     alert.present();
   }
 
-  goToPage(page) {
-    if (page === 'Register') {
-      this.navCtrl.push(RegistrationPage);
-    }
-  }
-
   logOut() {
     this.auth.logOut();
   }
