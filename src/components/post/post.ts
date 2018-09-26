@@ -10,7 +10,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   templateUrl: 'post.html'
 })
 export class PostComponent {
-  @Input() postItem: any;
+  @Input() public postItem: any = {};
   liked: any = false;
   favorited: boolean = false;
   text: string;

@@ -13,10 +13,6 @@ import { NewPostPage } from '../pages/new-post/new-post';
 import { PostsPage } from '../pages/posts/posts';
 import { RegistrationPage } from '../pages/registration/registration';
 
-// Components Go Here
-import { PostComponent } from '../components/post/post';
-import { SinogramComponent } from '../components/sinogram/sinogram';
-
 // Native Tools
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -28,6 +24,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 // Services
 import { AuthProvider } from '../providers/auth/auth';
 import { PostProvider } from '../providers/post/post';
+import { SinogramComponent } from '../components/sinogram/sinogram';
+import { PostComponent } from '../components/post/post';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -45,9 +43,9 @@ export const firebaseConfig = {
     LoginPage,
     NewPostPage,
     PostsPage,
-    PostComponent,
     RegistrationPage,
-    SinogramComponent
+    SinogramComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +60,9 @@ export const firebaseConfig = {
     LoginPage,
     NewPostPage,
     PostsPage,
-    PostComponent,
     RegistrationPage,
-    SinogramComponent
+    SinogramComponent,
+    PostComponent
   ],
   providers: [
     AdMobFree,
