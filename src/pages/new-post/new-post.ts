@@ -168,7 +168,7 @@ export class NewPostPage {
 
   testInitialClick() {
     if(this.initialClick === 0) {
-      this.cardText = "";
+      this.cardText = " ";
       this.initialClick++;
     }
   }
