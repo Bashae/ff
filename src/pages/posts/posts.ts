@@ -31,7 +31,7 @@ export class PostsPage {
   }
 
   prepareAdMob() {
-    this.admob.banner.config({id: 'ca-app-pub-8071301998700750/2198021539', isTesting: true, autoShow: true});
+    this.admob.banner.config({id: 'ca-app-pub-8071301998700750/2198021539', isTesting: false, autoShow: true});
     this.admob.banner.prepare().then(() => {this.admob.banner.show();}).catch(e => console.log(e));
   }
 

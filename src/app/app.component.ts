@@ -27,7 +27,8 @@ export class MyApp {
     splashScreen: SplashScreen, 
     public modalCtrl: ModalController,
     public auth: AuthProvider,
-    public admob: AdMobFree
+    public admob: AdMobFree,
+    public viewChild: ViewChild
   ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
@@ -37,25 +38,6 @@ export class MyApp {
 
     this.rootPage = PostsPage;
   }
-
-  // ngOnInit() {
-  //   this.prepareAdMob();
-  // }
-
-
-  // prepareAdMob() {
-  //   let bannerConfig = {
-  //     id: 'ca-app-pub-8071301998700750/2198021539',
-  //     isTesting: true,
-  //     autoShow: true
-  //    };
-  //    this.admob.banner.config(bannerConfig);
-  //    this.admob.banner.prepare()
-  //      .then(() => {
-  //        this.admob.banner.show();
-  //      })
-  //      .catch(e => console.log(e));
-  // }
 
   openNewPostModal() {
     if ( this.auth.isLoggedIn ) {
@@ -68,8 +50,10 @@ export class MyApp {
 
   goToPage(page) {
     if(page === 'Posts') {
-      this.footer = true;
-      this.nav.push(PostsPage);
+      if ( this.nav.getActive().component.name !== 'PostsPage') {
+        this.footer = true;
+        this.nav.push(PostsPage);
+      }
     }
     if(page === 'Landing') {
       if(this.auth.isLoggedIn) {
@@ -79,11 +63,16 @@ export class MyApp {
         this.nav.push(LandingPage);
       }
     }
+    if(page === 'Logout') {
+      this.admob.interstitial.config({'id': 'ca-app-pub-8071301998700750/9758647470', isTesting: false, autoShow: false});
+      this.admob.interstitial.prepare().then(() => {}).catch(e => console.log(e));
+      this.nav.push(PostsPage);
+    }
   }
 
   logOut() {
     this.auth.logOut();
-    this.goToPage('Posts');
+    this.goToPage('Logout');
   }
 }
 

@@ -174,7 +174,7 @@ export class NewPostPage {
   }
 
   prepareAdMob() {
-     this.admob.interstitial.config({id: 'ca-app-pub-8071301998700750/1646592856', isTesting: true, autoShow: false});
+     this.admob.interstitial.config({id: 'ca-app-pub-8071301998700750/1646592856', isTesting: false, autoShow: false});
      this.admob.interstitial.prepare().then(() => {}).catch(e => console.log(e));
   }
 

@@ -54,15 +54,17 @@ export class SinogramComponent {
     var id = setInterval(frame, 20);
 
     function frame() {
-      if (pos == count) {
-        clearInterval(id);
-      } else {
-          if(isGood) {
-            pos++;
-          } else {
-            pos--;
-          }
-          arrow.style.left = pos + '%'; 
+      if(arrow) {
+        if (pos == count) {
+          clearInterval(id);
+        } else {
+            if(isGood) {
+              pos++;
+            } else {
+              pos--;
+            }
+            arrow.style.left = pos + '%'; 
+        }
       }
     }
   }

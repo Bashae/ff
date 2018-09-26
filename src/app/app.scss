@@ -38,6 +38,7 @@
 .button--edit {
     color: #424242;
     background-color: transparent;
+    box-shadow: none !important;
     float: right;
     box-shadow: none;
     position: absolute;
@@ -46,9 +47,9 @@
 }
 
 .button--home {
-    color: #424242;
-    background-color: transparent;
-    box-shadow: none;
+    color: #424242 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
     float: left;
 }
 
@@ -74,6 +75,9 @@
 }
 
 .button--login-status {
+    background: transparent !important;
+    box-shadow: none !important;
+
     right: 50px;
     &.active {
         color: indianred;
