@@ -115,7 +115,7 @@ export class PostProvider {
     // LikeProvider, FavoriteProvider
     // TODO Clean
     let thing;
-    let selectedItems = this.afs.collection('favorites', ref => 
+    this.afs.collection('favorites', ref => 
       thing = ref.where('u_id', '==', this.auth.user.uid)
         .where('p_id', '==', postId));
 
@@ -143,7 +143,7 @@ export class PostProvider {
   updateLike(post: Post, type: string) {
     console.log('update like');
     let thing;
-    let selectedItems = this.afs.collection('likes', ref => 
+    this.afs.collection('likes', ref => 
       thing = ref.where('u_id', '==', this.auth.user.uid)
          .where('p_id', '==', post.id));
 
@@ -157,7 +157,7 @@ export class PostProvider {
   destroyLike(postId) {
     // TODO Clean
     let thing;
-    let selectedItems = this.afs.collection('likes', ref => 
+    this.afs.collection('likes', ref => 
       thing = ref.where('u_id', '==', this.auth.user.uid)
          .where('p_id', '==', postId));
 

@@ -20,6 +20,7 @@ export class MyApp {
   footer: boolean = true;
   view: any;
   rootPage: any;
+  currentPage: string = 'posts';
 
   constructor(
     platform: Platform, 
@@ -50,9 +51,10 @@ export class MyApp {
 
   goToPage(page) {
     if(page === 'Posts') {
-      if ( this.nav.getActive().component.name !== 'PostsPage') {
+      if ( this.currentPage !== 'posts') {
         this.footer = true;
         this.nav.push(PostsPage);
+        this.currentPage = 'posts';
       }
     }
     if(page === 'Landing') {
@@ -62,6 +64,7 @@ export class MyApp {
         this.footer = false;
         this.nav.push(LandingPage);
       }
+      this.currentPage = 'landing';
     }
     if(page === 'Logout') {
       this.admob.interstitial.config({'id': 'ca-app-pub-8071301998700750/9758647470', isTesting: false, autoShow: false});
