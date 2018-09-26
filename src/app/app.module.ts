@@ -7,15 +7,6 @@ import { HttpModule } from '@angular/http';
 
 // App And Pages
 import { MyApp } from './app.component';
-import { LandingPage } from '../pages/landing/landing';
-import { LoginPage } from '../pages/login/login';
-import { NewPostPage } from '../pages/new-post/new-post';
-import { PostsPage } from '../pages/posts/posts';
-import { RegistrationPage } from '../pages/registration/registration';
-
-// Components Go Here
-import { PostComponent } from '../components/post/post';
-import { SinogramComponent } from '../components/sinogram/sinogram';
 
 // Native Tools
 import { AngularFireModule } from 'angularfire2';
@@ -40,14 +31,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    LandingPage,
-    LoginPage,
-    NewPostPage,
-    PostsPage,
-    PostComponent,
-    RegistrationPage,
-    SinogramComponent
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -57,14 +41,7 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    LandingPage,
-    LoginPage,
-    NewPostPage,
-    PostsPage,
-    PostComponent,
-    RegistrationPage,
-    SinogramComponent
+    MyApp
   ],
   providers: [
     AdMobFree,
