@@ -7,6 +7,11 @@ import { HttpModule } from '@angular/http';
 
 // App And Pages
 import { MyApp } from './app.component';
+import { LandingPage } from '../pages/landing/landing';
+import { LoginPage } from '../pages/login/login';
+import { NewPostPage } from '../pages/new-post/new-post';
+import { PostsPage } from '../pages/posts/posts';
+import { RegistrationPage } from '../pages/registration/registration';
 
 // Native Tools
 import { AngularFireModule } from 'angularfire2';
@@ -31,8 +36,12 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp
-  ],
+    MyApp,
+    LandingPage,
+    LoginPage,
+    NewPostPage,
+    PostsPage,
+    RegistrationPage  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -41,8 +50,12 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
-  ],
+    MyApp,
+    LandingPage,
+    LoginPage,
+    NewPostPage,
+    PostsPage,
+    RegistrationPage  ],
   providers: [
     AdMobFree,
     AuthProvider,
