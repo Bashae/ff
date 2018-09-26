@@ -23,10 +23,10 @@ export class PostsPage {
     public events: Events,
     public admob: AdMobFree
   ) {
-    this.prepareAdMob();
     this.getStartPosts();
     this.events.subscribe('post:created', (res) => {
       this.getStartPosts();
+      this.prepareAdMob();
     });
   }
 
