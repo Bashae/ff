@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { PostComponent } from './post/post';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SinogramComponent } from './sinogram/sinogram';
-import { IonicModule } from 'ionic-angular';
-import { CommonModule } from '@angular/common';
+import { PostComponent } from './post/post';
 
 @NgModule({
-	declarations: [PostComponent,
-    SinogramComponent],
-	imports: [IonicModule, CommonModule],
-	exports: [PostComponent,
-    SinogramComponent]
+	declarations: [SinogramComponent,
+	PostComponent],
+	imports: [],
+	exports: [SinogramComponent,
+	PostComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class ComponentsModule {}

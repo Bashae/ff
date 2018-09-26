@@ -7,11 +7,10 @@ import { HttpModule } from '@angular/http';
 
 // App And Pages
 import { MyApp } from './app.component';
-import { LandingPage } from '../pages/landing/landing';
-import { LoginPage } from '../pages/login/login';
-import { NewPostPage } from '../pages/new-post/new-post';
-import { PostsPage } from '../pages/posts/posts';
-import { RegistrationPage } from '../pages/registration/registration';
+import { LandingPageModule } from '../pages/landing/landing.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { NewPostPageModule } from '../pages/new-post/new-post.module';
+import { PostsPageModule } from '../pages/posts/posts.module';
 
 // Native Tools
 import { AngularFireModule } from 'angularfire2';
@@ -24,8 +23,6 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 // Services
 import { AuthProvider } from '../providers/auth/auth';
 import { PostProvider } from '../providers/post/post';
-import { SinogramComponent } from '../components/sinogram/sinogram';
-import { PostComponent } from '../components/post/post';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -38,31 +35,23 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    LandingPage,
-    LoginPage,
-    NewPostPage,
-    PostsPage,
-    RegistrationPage,
-    SinogramComponent,
-    PostComponent
+    MyApp
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    NewPostPageModule,
+    PostsPageModule,
+    LandingPageModule,
+    LoginPageModule,
+    PostsPageModule,
+    NewPostPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    LandingPage,
-    LoginPage,
-    NewPostPage,
-    PostsPage,
-    RegistrationPage,
-    SinogramComponent,
-    PostComponent
+    MyApp
   ],
   providers: [
     AdMobFree,
